@@ -6,6 +6,8 @@
 
 QT       += core gui
 
+CONFIG += console
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = ProjetCPlatform
@@ -25,10 +27,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+
 
 HEADERS += \
-        mainwindow.h
+    player.h \
+    coin.h
+
 
 FORMS += \
-        mainwindow.ui
+
+
+INCLUDEPATH += C:\Librairies\SFML\SFML-2.4.2\include
+DEPENDPATH+= C:\Librairies\SFML\SFML-2.4.2\include
+
+LIBS += -LC:\Librairies\SFML\TestSFML\LIBS\
+
+CONFIG(debug,debug|release): LIBS += -lsfml-audio-d -lsfml-system-d -lsfml-network-d -lsfml-main-d -lsfml-window-d -lsfml-graphics-d
+CONFIG(release,debug|release): LIBS += -lsfml-audio -lsfml-system -lsfml-network -lsfml-main -lsfml-window -lsfml-graphics
+
