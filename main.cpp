@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 
 int main(int argc, char *argv[]){
     //sf::RenderWindow window(sf::VideoMode(800,600),"Hello Window");
-
+    //COUCOU
     sf::RenderWindow window;
 
     sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width/2)-445,(sf::VideoMode::getDesktopMode().height/2)-200);
