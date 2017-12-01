@@ -1,50 +1,32 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-
-#include <iostream>
 #include <SFML/Graphics.hpp>
-#include <coin.h>
+#include "animation.h"
+#include "collider.h"
 
-class Player{
-public :
-    Player(){
-        if(!perso.loadFromFile("images/player.png")){
-            QFileInfo file("images/player.png");
-            qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas";
-        }
-        perso.setSmooth(true);
+class Player
+{
+public:
+    Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,float speed,float jumpHeight);
+    ~Player();
 
-        sprite.setTexture(perso);
+    void Update(float deltaTime);
+    void Draw(sf::RenderWindow& window);
+    void OnCollision(sf::Vector2f direction);
 
-    }
-
-    void drawTo(sf::RenderWindow & window){
-        window.draw(sprite);
-    }
-
-    void move(sf::Vector2f distance){
-        sprite.move(distance);
-    }
-
-    void setPos(sf::Vector2f newPos){
-        sprite.setPosition(newPos);
-    }
-
-    int getY(){
-        return sprite.getPosition().y;
-    }
-
-    bool isCollidingWithCoin(Coin *coin){
-        if(sprite.getGlobalBounds().intersects((coin->getGlobalBounds()))){
-            return true;
-        }
-        return false;
-    }
-
+    sf::Vector2f GetPosition(){return body.getPosition();}
+    Collider GetCollider(){ return Collider(body);}
 private:
-    //sf::RectangleShape player;
-       sf::Texture perso;
-       sf::Sprite sprite;
+    sf::RectangleShape body;
+    Animation animation;
+    unsigned int row;
+    float speed;
+    bool faceRight;
+
+    sf::Vector2f velocity;
+    bool canJump;
+    float jumpHeight;
+
 
 };
 

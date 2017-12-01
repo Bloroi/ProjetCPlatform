@@ -1,208 +1,150 @@
-#include "mainwindow.h"
 #include <QApplication>
 #include <SFML/Graphics.hpp>
 #include <QFileInfo>
 #include <QDebug>
-#include "player.h"
-#include "coin.h"
 #include <sstream>
 #include <SFML/Audio.hpp>
+#include <vector>
+#include "animation.h"
+#include "player.h"
+#include "platform.h"
 
+static const float VIEW_HEIGHT = 1600.0f;
 
-/*
-int main(int argc, char *argv[])
+void ResizeView(const sf::RenderWindow& window,sf::View& view)
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-
-    return a.exec();
+    float aspectRatio = float(window.getSize().x)/ float(window.getSize().y);
+    view.setSize(VIEW_HEIGHT * aspectRatio,VIEW_HEIGHT);
 }
-*/
 
-int main(int argc, char *argv[]){
-    //sf::RenderWindow window(sf::VideoMode(800,600),"Hello Window");
-    //COUCOU je m'apelle Ceeee
-    sf::RenderWindow window;
+int main(){
+    sf::RenderWindow window(sf::VideoMode(512,512),"SFML Tutorial Youtube 2",sf::Style::Close | sf::Style::Resize);
+    sf::View view(sf::Vector2f(0.0f,0.0f),sf::Vector2f(VIEW_HEIGHT,VIEW_HEIGHT));
+    float aspectRatio;
+   // sf::RectangleShape player(sf::Vector2f(100.0f,150.0f));
+ //   player.setPosition(206.0f,206.0f);
+    //sf::Sprite background;
+    sf::Texture playerTexture;
 
-    sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width/2)-445,(sf::VideoMode::getDesktopMode().height/2)-200);
 
-    window.create(sf::VideoMode(700,500),"ProjectVideoGame",sf::Style::Titlebar | sf::Style::Close);
-    window.setPosition(centerWindow);
+    if(!playerTexture.loadFromFile("images/persogrille2.png")){
+        QFileInfo file("images/persogrille2.png");
+        qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas";
+    }
+    playerTexture.setSmooth(true);
+    //player.setTexture(&playerTexture);
 
-    sf::Texture perso;
-    sf::Sprite sprite;
+    //Animation animation(&playerTexture, sf::Vector2u(9,5),0.3f);
+    Player player(&playerTexture, sf::Vector2u(9,5),0.1f,350.0f,500.0f);
+
+    //Background
+    /*
     sf::Texture backgroundTexture;
-    sf::Sprite background;
-    sf::Vector2u TextureSize;  //Added to store texture size.
-    sf::Vector2u WindowSize;   //Added to store window size.
-    sf::SoundBuffer buffer;
-    sf::SoundBuffer coinB;
-    sf::Sound sound;
-    sf::Sound coinS;
-    sf::Music music;
-
-
-    if(!music.openFromFile("music/music.wav")){
-        QFileInfo file("music/music.wav");
-        qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas ou n'est pas compatible !";
-    }
-    music.play();
-    music.setLoop(true);
-
-    if(!buffer.loadFromFile("music/jump.wav")){
-        QFileInfo file("music/jump.wav");
-        qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas ou n'est pas compatible !";
-    }
-    sound.setBuffer(buffer);
-
-    if(!coinB.loadFromFile("music/coin.wav")){
-        QFileInfo file("music/coin.wav");
-        qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas ou n'est pas compatible !";
-    }
-    coinS.setBuffer(coinB);
-
-
     if(!backgroundTexture.loadFromFile("images/background.png")){
         QFileInfo file("images/background.png");
         qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas ou n'est pas compatible !";
     }else{
-        TextureSize = backgroundTexture.getSize(); //Size de la texture
-        WindowSize = window.getSize();
+        sf::Vector2u TextureSize = backgroundTexture.getSize(); //Size de la texture
+        sf::Vector2u WindowSize = window.getSize();
 
         float ScaleX = (float) WindowSize.x/TextureSize.x;
         float ScaleY = (float) WindowSize.y/TextureSize.y;
 
         background.setTexture(backgroundTexture);
         background.setScale(ScaleX,ScaleY);
-    }
+    }*/
 
 
-    window.setKeyRepeatEnabled(true);
+    //Don't need this anymore
+    /*
+    sf::Vector2u textureSize = playerTexture.getSize();
+    textureSize.x /=9;
+    textureSize.y/=5;
 
-    sf::RectangleShape rect;
-    rect.setPosition(sf::Vector2f(50,200));
-    rect.setSize(sf::Vector2f(30,30));
-    rect.setFillColor(sf::Color(33,42,231,255));
+    player.setTextureRect(sf::IntRect(textureSize.x*2,textureSize.y*2,textureSize.x,textureSize.y));*/
 
-    if(!perso.loadFromFile("images/player.png")){
-        QFileInfo file("images/player.png");
+    sf::Texture groundTexture;
+    if(!groundTexture.loadFromFile("images/ground.png")){
+        QFileInfo file("images/ground.png");
         qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas";
     }
-    perso.setSmooth(true);
 
-    sprite.setTexture(perso);
+    std::vector<Platform> platforms;
 
-    //Player OBJECT
-    Player player;
-    player.setPos({50,200});
+    platforms.push_back(Platform(&groundTexture,sf::Vector2f(400.0f,100.0f),sf::Vector2f(2700.0f,150.0f)));
+    //platforms.push_back(Platform(nullptr,sf::Vector2f(400.0f,200.0f),sf::Vector2f(500.0f,0.0f)));
+    platforms.push_back(Platform(&groundTexture,sf::Vector2f(1000.0f,300.0f),sf::Vector2f(500.0f,650.0f)));
+    platforms.push_back(Platform(&groundTexture,sf::Vector2f(1000.0f,300.0f),sf::Vector2f(2000.0f,650.0f)));
+    platforms.push_back(Platform(nullptr,sf::Vector2f(1,1000),sf::Vector2f(-1,0)));
+/*    Platform platform1(&groundTexture,sf::Vector2f(400.0f,200.0f),sf::Vector2f(500.0f,200.0f));
+    Platform platform2(nullptr,sf::Vector2f(400.0f,200.0f),sf::Vector2f(500.0f,0.0f));
+    Platform platform3(&groundTexture,sf::Vector2f(1000.0f,200.0f),sf::Vector2f(500.0f,500.0f));*/
 
-    //Coin OBJECT
-    std::vector<Coin*> coinVec; // pointeur et référencement car nous voulons pouvoir supprimer,modifier l'objet coin quand le joueur le touche
-    Coin coin1({20,20});
-    Coin coin2({20,20});
-    coinVec.push_back(&coin1);
-    coinVec.push_back(&coin2);
-
-    coin1.setPos({375,350});
-    coin2.setPos({250,375});
-
-    //Score Objects :
-    int score = 0;
-
-    sf::Font arial;
-    arial.loadFromFile("styles/arial.ttf");
+    float deltaTime = 0.0f;
+    sf::Clock clock;
 
 
-    std::ostringstream ssScore;
-    ssScore <<"Score : " <<score;
-
-    sf::Text lblScore;
-    lblScore.setCharacterSize(30);
-    lblScore.setPosition({10,10});
-    lblScore.setFont(arial);
-    lblScore.setString(ssScore.str());
-
-
-
-    //Gravity variables :
-    const int groundHeight = 400;
-    const float gravitySpeed = 0.3;
-    bool isJumping = false;
-
-
-
-
-    while (window.isOpen()){
-        sf::Event Event;
-
-        const float moveSpeed = 0.2;
-
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-            player.move({0,-moveSpeed});
-            //sound.play();
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-                        player.move({moveSpeed,0});
-
-                    }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-                        player.move({-moveSpeed,0});
-
-                    }
-            isJumping = true;
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            player.move({moveSpeed,0});
-
-        }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            player.move({-moveSpeed,0});
-
+    while(window.isOpen())
+    {
+        deltaTime = clock.restart().asSeconds();
+        if(deltaTime > 1.0f /20.0f){
+            deltaTime = 1.0f /20.0f;
         }
 
-
-        //Event Loop:
-        while(window.pollEvent(Event)){
-            switch(Event.type){
+        sf::Event event;
+        while(window.pollEvent(event))
+        {
+            switch(event.type){
             case sf::Event::Closed:
                 window.close();
-
-            case sf::Event::KeyReleased:
-                isJumping = false;
-            }
-
-            if(Event.key.code == sf::Keyboard::Space){
-                isJumping=false;
-            }
-
-        }
-
-        //Gravity Logic
-
-        if(player.getY()<groundHeight && isJumping==false){
-            player.move({0,gravitySpeed});
-        }
-
-        //Coin Logic
-        for(int i = 0 ;i<coinVec.size();i++){
-            if(player.isCollidingWithCoin(coinVec[i])){
-                coinVec[i]->setPos({4000,4000});
-                //coinVec.erase(coinVec.begin()+i-1);
-                coinS.play();
-                score++;
-                ssScore.str("");
-                ssScore << "Score : "<<score;
-                lblScore.setString(ssScore.str());
+                break;
+            case sf::Event::Resized:
+                ResizeView(window,view);
+                break;
             }
         }
-        window.clear();
-        window.draw(background);
-        window.draw(lblScore);
-        coin1.drawTo(window);
-        coin2.drawTo(window);
-        player.drawTo(window);
-        window.draw(rect);
+        player.Update(deltaTime);
+
+        sf::Vector2f direction;
+
+
+        for(Platform& platform : platforms) // for each
+        {
+            if(platform.GetCollider().CheckCollision(player.GetCollider(),direction,1.0f))
+                player.OnCollision(direction);
+        }
+/*        platform1.GetCollider().CheckCollision(player.GetCollider(),1.0f);
+        platform2.GetCollider().CheckCollision(player.GetCollider(),0.1f);*/
+
+        //Permet de déterminer où la caméra peut aller au minimum en fonction de la taille de fenêtre
+        aspectRatio = float(window.getSize().x)/float(window.getSize().y);
+
+        view.setCenter(player.GetPosition().x,player.GetPosition().y-200);
+
+
+        if(view.getCenter().x<(VIEW_HEIGHT*aspectRatio)/2){
+            view.setCenter((VIEW_HEIGHT*aspectRatio)/2,view.getCenter().y);
+        }
+
+        if(view.getCenter().y>0){
+            view.setCenter(view.getCenter().x,0);
+        }
+       /* animation.Update(0,deltaTime,true);
+        player.setTextureRect(animation.uvRect);*/
+
+        window.clear(sf::Color(150,150,150));
+        window.setView(view);
+        player.Draw(window);
+
+        for(Platform& platform : platforms){
+            platform.Draw(window);
+        }
+
+      //  qDebug() << player.GetPosition().x << player.GetPosition().y;
+        qDebug() << view.getCenter().x << view.getCenter().y;
+/*        platform1.Draw(window);
+        platform2.Draw(window);*/
         window.display();
-
     }
     return 0;
 }
