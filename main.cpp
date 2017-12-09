@@ -8,6 +8,12 @@
 #include "animation.h"
 #include "player.h"
 #include "platform.h"
+#include "functions.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
 
 static const float VIEW_HEIGHT = 1600.0f;
 
@@ -37,48 +43,25 @@ int main(){
     //Animation animation(&playerTexture, sf::Vector2u(9,5),0.3f);
     Player player(&playerTexture, sf::Vector2u(9,5),0.1f,350.0f,500.0f);
 
-    //Background
-    /*
-    sf::Texture backgroundTexture;
-    if(!backgroundTexture.loadFromFile("images/background.png")){
-        QFileInfo file("images/background.png");
-        qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas ou n'est pas compatible !";
-    }else{
-        sf::Vector2u TextureSize = backgroundTexture.getSize(); //Size de la texture
-        sf::Vector2u WindowSize = window.getSize();
 
-        float ScaleX = (float) WindowSize.x/TextureSize.x;
-        float ScaleY = (float) WindowSize.y/TextureSize.y;
-
-        background.setTexture(backgroundTexture);
-        background.setScale(ScaleX,ScaleY);
-    }*/
-
-
-    //Don't need this anymore
-    /*
-    sf::Vector2u textureSize = playerTexture.getSize();
-    textureSize.x /=9;
-    textureSize.y/=5;
-
-    player.setTextureRect(sf::IntRect(textureSize.x*2,textureSize.y*2,textureSize.x,textureSize.y));*/
-
-    sf::Texture groundTexture;
-    if(!groundTexture.loadFromFile("images/ground.png")){
-        QFileInfo file("images/ground.png");
-        qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas";
-    }
 
     std::vector<Platform> platforms;
 
-    platforms.push_back(Platform(&groundTexture,sf::Vector2f(400.0f,100.0f),sf::Vector2f(2700.0f,150.0f)));
-    //platforms.push_back(Platform(nullptr,sf::Vector2f(400.0f,200.0f),sf::Vector2f(500.0f,0.0f)));
-    platforms.push_back(Platform(&groundTexture,sf::Vector2f(1000.0f,300.0f),sf::Vector2f(500.0f,650.0f)));
-    platforms.push_back(Platform(&groundTexture,sf::Vector2f(1000.0f,300.0f),sf::Vector2f(2000.0f,650.0f)));
-    platforms.push_back(Platform(nullptr,sf::Vector2f(1,1000),sf::Vector2f(-1,0)));
-/*    Platform platform1(&groundTexture,sf::Vector2f(400.0f,200.0f),sf::Vector2f(500.0f,200.0f));
-    Platform platform2(nullptr,sf::Vector2f(400.0f,200.0f),sf::Vector2f(500.0f,0.0f));
-    Platform platform3(&groundTexture,sf::Vector2f(1000.0f,200.0f),sf::Vector2f(500.0f,500.0f));*/
+
+    //Lire plateforms
+
+    lirePlatform(platforms);
+
+    //Ecrire
+/*
+    string const filename("platforms.txt");
+    std::ofstream out (filename.c_str());
+    for(Platform platform : platforms){
+      out << platform;
+    }
+    out.close();
+*/
+
 
     float deltaTime = 0.0f;
     sf::Clock clock;
@@ -110,7 +93,7 @@ int main(){
 
         for(Platform& platform : platforms) // for each
         {
-            if(platform.GetCollider().CheckCollision(player.GetCollider(),direction,1.0f))
+            if(platform.GetCollider().CheckCollision(player.GetCollider(),direction,1.00f))
                 player.OnCollision(direction);
         }
 /*        platform1.GetCollider().CheckCollision(player.GetCollider(),1.0f);
@@ -141,7 +124,7 @@ int main(){
         }
 
       //  qDebug() << player.GetPosition().x << player.GetPosition().y;
-        qDebug() << view.getCenter().x << view.getCenter().y;
+       // qDebug() << view.getCenter().x << view.getCenter().y;
 /*        platform1.Draw(window);
         platform2.Draw(window);*/
         window.display();

@@ -31,14 +31,16 @@ SOURCES += \
     animation.cpp \
     player.cpp \
     collider.cpp \
-    platform.cpp
+    platform.cpp \
+    functions.cpp
 
 
 HEADERS += \
     animation.h \
     player.h \
     collider.h \
-    platform.h
+    platform.h \
+    functions.h
 
 
 FORMS += \
