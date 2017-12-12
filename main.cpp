@@ -9,6 +9,7 @@
 #include "player.h"
 #include "platform.h"
 #include "functions.h"
+#include "item.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -52,6 +53,8 @@ int main(){
 
     lirePlatform(platforms);
 
+    std::vector<Item> items;
+    items.push_back(Item(sf::Vector2f(80,80),sf::Vector2f(570,420)));
     //Ecrire
 /*
     string const filename("platforms.txt");
@@ -96,6 +99,14 @@ int main(){
             if(platform.GetCollider().CheckCollision(player.GetCollider(),direction,1.00f))
                 player.OnCollision(direction);
         }
+
+        for(Item& item : items) // for each
+        {
+            if(item.GetCollider().CheckCollect(player.GetCollider())){
+                item.setPos(sf::Vector2f(0.00f,0.00f));
+             }
+        }
+
 /*        platform1.GetCollider().CheckCollision(player.GetCollider(),1.0f);
         platform2.GetCollider().CheckCollision(player.GetCollider(),0.1f);*/
 
@@ -122,6 +133,12 @@ int main(){
         for(Platform& platform : platforms){
             platform.Draw(window);
         }
+
+        for(Item item : items){
+            item.Draw(window);
+        }
+
+
 
       //  qDebug() << player.GetPosition().x << player.GetPosition().y;
        // qDebug() << view.getCenter().x << view.getCenter().y;

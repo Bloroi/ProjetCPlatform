@@ -12,6 +12,7 @@ Player::Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,flo
     body.setOrigin(body.getSize()/2.0f);
     body.setPosition(206.0f,206.0f);
     body.setTexture(texture);
+    //body.setFillColor(sf::Color::Blue);
 }
 
 Player::~Player(){

@@ -40,7 +40,8 @@ HEADERS += \
     player.h \
     collider.h \
     platform.h \
-    functions.h
+    functions.h \
+    item.h
 
 
 FORMS += \
