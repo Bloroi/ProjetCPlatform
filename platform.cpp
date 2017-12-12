@@ -20,6 +20,7 @@ Platform::~Platform()
 
 }
 
+/** Cette méthode permet d'écrire dans la window la plateforme **/
 void Platform::Draw(sf::RenderWindow& window)
 {
     window.draw(body);

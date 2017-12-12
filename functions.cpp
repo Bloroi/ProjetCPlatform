@@ -17,6 +17,7 @@ istream& operator>>(istream& is, Platform& p)
     return is;
 }*/
 
+/** Cette méthode permet de lire dans un fichier txt les informations sur les plateformes**/
 void lirePlatform(vector<Platform>& platforms){
     string a,b,c,d,e,f,g;
     float c1,d1,e1,f1;
@@ -61,7 +62,7 @@ void lirePlatform(vector<Platform>& platforms){
 
 
 
-
+/** Cette méthode permet d'écrire des plateformes dans un fichier txt**/
 ostream& operator<<(ostream& os, const Platform& p)
 {
     os <<p.name<<","<<p.filename<<","<<p.body.getSize().x <<","<<  p.body.getSize().y <<","<<p.body.getPosition().x<<","<<p.body.getPosition().y<<";"<<endl;

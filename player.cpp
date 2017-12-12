@@ -19,6 +19,8 @@ Player::~Player(){
 
 }
 
+/**Cette méthode agit si il y a collision avec une plateforme empêchant de bouger le personnage dans la direction de
+ cette plateforme**/
 void Player::OnCollision(sf::Vector2f direction)
 {
     if(direction.x < 0.0f)
@@ -47,7 +49,7 @@ void Player::OnCollision(sf::Vector2f direction)
 
 }
 
-
+/**Est apellé à chaque frame du jeu pour mettre à jour les mouvements du personnage **/
 void Player::Update(float deltaTime){
 
     //sf::Vector2f movement(0.0f,0.0f);
@@ -108,6 +110,7 @@ void Player::Update(float deltaTime){
     body.move(velocity*deltaTime);
 }
 
+/**Permet d'écrire le personnage dans la window passée en paramètre **/
 void Player::Draw(sf::RenderWindow& window){
     window.draw(body);
 }

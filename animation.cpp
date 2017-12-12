@@ -16,6 +16,7 @@ Animation::~Animation()
 
 }
 
+/** Met à jour l'animation de l'objet qui l'appelle **/
 void Animation::Update(int row, float deltaTime,bool faceRight){
     currentImage.y = row;
     totalTime+=deltaTime;
