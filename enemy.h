@@ -23,6 +23,7 @@ private:
     unsigned int row;
     float speed;
     bool faceRight;
+    int pos;
 
     sf::Vector2f velocity;
 

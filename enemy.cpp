@@ -12,6 +12,7 @@ Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,float
     body.setPosition(206.0f,206.0f);
     body.setTexture(texture);
     //body.setFillColor(sf::Color::Blue);
+    pos =0;
 }
 
 Enemy::~Enemy(){
@@ -51,16 +52,18 @@ void Enemy::Update(float deltaTime){
     //sf::Vector2f movement(0.0f,0.0f);
     velocity.x = 0.0f;
 
-    for(int i=0; i<1000;i++){
-        if(i<500)
-        {
+    pos++;
 
-            velocity.x -=speed /** deltaTime*/;
-        }
-        else
-        {
-            velocity.x +=speed /** deltaTime*/;
-        }
+    if(pos<500)
+     {
+          velocity.x -=speed /** deltaTime*/;
+     }
+      else
+     {
+          velocity.x +=speed /** deltaTime*/;
+     }
+    if(pos==1000){
+        pos=0;
     }
 
 
