@@ -1,7 +1,9 @@
 #include "platform.h"
 
-Platform::Platform(string filename, sf::Vector2f size, sf::Vector2f position )
+Platform::Platform(string name,string filename, sf::Vector2f size, sf::Vector2f position )
 {
+    this->name = name;
+
     sf::Texture *texture = new sf::Texture;
     if(!texture->loadFromFile(filename))
         qDebug()<<"Fichier n'existe pas";
