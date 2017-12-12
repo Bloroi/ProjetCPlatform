@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "enemy.h"
 
 using namespace std;
 
@@ -43,6 +44,8 @@ int main(){
 
     //Animation animation(&playerTexture, sf::Vector2u(9,5),0.3f);
     Player player(&playerTexture, sf::Vector2u(9,5),0.1f,350.0f,500.0f);
+
+    Enemy ennemi(&playerTexture, sf::Vector2u(9,5),0.2f,450.0f);
 
 
 
@@ -90,14 +93,21 @@ int main(){
             }
         }
         player.Update(deltaTime);
-
+        ennemi.Update(deltaTime);
         sf::Vector2f direction;
+
+
+     /*   sf::Thread thread(ennemi.Update(deltaTime));
+
+        thread.launch();*/
 
 
         for(Platform& platform : platforms) // for each
         {
             if(platform.GetCollider().CheckCollision(player.GetCollider(),direction,1.00f))
                 player.OnCollision(direction);
+            if(platform.GetCollider().CheckCollision(ennemi.GetCollider(),direction,1.00f))
+                ennemi.OnCollision(direction);
         }
 
         for(Item& item : items) // for each
@@ -129,6 +139,7 @@ int main(){
         window.clear(sf::Color(150,150,150));
         window.setView(view);
         player.Draw(window);
+        ennemi.Draw(window);
 
         for(Platform& platform : platforms){
             platform.Draw(window);

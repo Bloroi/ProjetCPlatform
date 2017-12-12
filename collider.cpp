@@ -79,7 +79,7 @@ bool Collider::CheckCollect(Collider other){
     float intersectX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x)+65;
     float intersectY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y)+25;
 
-    cout<<intersectX<<"-"<<intersectY<<endl;
+   // cout<<intersectX<<"-"<<intersectY<<endl;
 
     if(intersectX < 0.0f && intersectY < 0.00f){
         return true;
