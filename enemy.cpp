@@ -47,23 +47,82 @@ void Enemy::OnCollision(sf::Vector2f direction)
 }
 
 
-void Enemy::Update(float deltaTime){
+void Enemy::Update(float deltaTime,vector<Platform> plats){
+
 
     velocity.x = 0.0f;
+    bool moveOK=false;
+    //pos++;
 
-    pos++;
-
-    if(pos<1000)
+//cout<<pos<<endl;
+if(velocity.y==0){
+    if(pos<20000)
      {
-          velocity.x -=speed ;
+        for(int i=0;i<plats.size();i++)
+        {
+
+            if(plats[i].GetCollider().CheckOnPlatform(this->GetCollider())){
+
+               moveOK=true;
+               break;
+
+            }
+
+
+        }
+        if(!moveOK ){
+            pos=20000;
+
+             velocity.x +=speed ;
+        }
+        else
+        {
+            pos++;
+            velocity.x -=speed ;
+            if(velocity.x==0){
+                pos=20000;
+            }
+        }
+
+
+
+         // velocity.x -=speed ;
+
      }
       else
      {
-          velocity.x +=speed ;
+        for(int i=0;i<plats.size();i++)
+        {
+
+            if(plats[i].GetCollider().CheckOnPlatform(this->GetCollider())){
+
+               moveOK=true;
+               break;
+
+            }
+
+        }
+        if(!moveOK){
+            pos=0;
+
+            velocity.x -=speed ;
+        }
+        else
+        {
+            pos++;
+            velocity.x +=speed ;
+            if(velocity.x==0){
+                pos=0;
+            }
+        }
+          //velocity.x +=speed ;
+
      }
-    if(pos==2000){
+    if(pos==40000){
         pos=0;
     }
+
+}
 
 
     velocity.y += 981.0f * deltaTime;
@@ -89,6 +148,8 @@ void Enemy::Update(float deltaTime){
     body.setTextureRect(animation.uvRect);
     body.move(velocity*deltaTime);
 }
+
+
 
 
 

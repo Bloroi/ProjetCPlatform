@@ -47,8 +47,16 @@ int main(){
 
     /*ENEMY*/
     std::vector<Enemy*> enemies;
-    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(800.0f,425.0f),0.2f,250.0f));
-
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3100.0f,425.0f),0.2f,250.0f));
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3050.0f,425.0f),0.2f,250.0f));
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3075.0f,425.0f),0.2f,250.0f));
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3055.0f,425.0f),0.2f,250.0f));
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3080.0f,425.0f),0.2f,250.0f));
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3085.0f,425.0f),0.2f,250.0f));
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3089.0f,425.0f),0.2f,250.0f));
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3088.0f,425.0f),0.2f,250.0f));
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3054.0f,425.0f),0.2f,250.0f));
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3060.0f,425.0f),0.2f,250.0f));
     /*PLATFORM*/
     std::vector<Platform> platforms;
     //Methode pour lire les platforms
@@ -95,7 +103,7 @@ int main(){
         player.Update(deltaTime);
 
         for(int i=0;i<enemies.size();i++){
-            enemies[i]->Update(deltaTime);
+            enemies[i]->Update(deltaTime,platforms);
             if(enemies[i]->GetCollider().CheckCollect(player.GetCollider())){
                 //player.setPosition(sf::Vector2f(0.00f,0.00f));
                 //player.OnCollision(direction);
@@ -159,7 +167,12 @@ int main(){
         window.clear(sf::Color(150,150,150));
         window.setView(view);
         player.Draw(window);
-        enemies[0]->Draw(window);
+
+        for(int i=0;i<enemies.size();i++)
+        {
+            enemies[i]->Draw(window);
+        }
+
 
         for(Platform& platform : platforms){
             platform.Draw(window);

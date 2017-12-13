@@ -16,6 +16,7 @@ public:
 
     bool CheckCollision(Collider other,sf::Vector2f& direction, float push);
     bool CheckCollect(Collider other);
+    bool CheckOnPlatform(Collider other);
     bool CheckWall();
     sf::Vector2f GetPosition(){ return body.getPosition();}
     sf::Vector2f GetHalfSize(){ return body.getSize()/2.0f;}
