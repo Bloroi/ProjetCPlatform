@@ -114,7 +114,4 @@ void Player::Update(float deltaTime){
 void Player::Draw(sf::RenderWindow& window){
     window.draw(body);
 }
-/**Permet de teleporter le joueur à une position**/
-void Player::setPosition(sf::Vector2f position){
-    body.setPosition(position);
-}
+
