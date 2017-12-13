@@ -15,8 +15,15 @@ Player::Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,flo
     //body.setFillColor(sf::Color::Blue);
 }
 
+
+
 Player::~Player(){
 
+}
+
+void Player::setcolordamage(sf::Color color)
+{
+    body.setFillColor(color); ;
 }
 
 /**Cette méthode agit si il y a collision avec une plateforme empêchant de bouger le personnage dans la direction de
@@ -52,9 +59,7 @@ void Player::OnCollision(sf::Vector2f direction)
 /**Est apellé à chaque frame du jeu pour mettre à jour les mouvements du personnage **/
 void Player::Update(float deltaTime){
 
-    //sf::Vector2f movement(0.0f,0.0f);
     velocity.x = 0.0f;
-
 
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
@@ -69,10 +74,6 @@ void Player::Update(float deltaTime){
            velocity.x +=speed*1.2;
           }
     }
-/*    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-        movement.y -=speed * deltaTime;
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        movement.y +=speed * deltaTime;*/
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && canJump)
     {

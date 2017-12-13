@@ -11,7 +11,7 @@ Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f position,
     body.setSize(sf::Vector2f(100.0f,150.0f));
     body.setOrigin(body.getSize()/2.0f);
     body.setTexture(texture);
-    //body.setFillColor(sf::Color::Blue);
+    body.setFillColor(sf::Color::Blue);
     pos =0;
 }
 
@@ -49,20 +49,19 @@ void Enemy::OnCollision(sf::Vector2f direction)
 
 void Enemy::Update(float deltaTime){
 
-    //sf::Vector2f movement(0.0f,0.0f);
     velocity.x = 0.0f;
 
     pos++;
 
-    if(pos<1500)
+    if(pos<1000)
      {
-          velocity.x -=speed /** deltaTime*/;
+          velocity.x -=speed ;
      }
       else
      {
-          velocity.x +=speed /** deltaTime*/;
+          velocity.x +=speed ;
      }
-    if(pos==3000){
+    if(pos==2000){
         pos=0;
     }
 
@@ -90,6 +89,8 @@ void Enemy::Update(float deltaTime){
     body.setTextureRect(animation.uvRect);
     body.move(velocity*deltaTime);
 }
+
+
 
 void Enemy::Draw(sf::RenderWindow& window){
     window.draw(body);

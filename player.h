@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "animation.h"
 #include "collider.h"
+#include "enemy.h"
 
 class Player
 {
@@ -17,6 +18,11 @@ public:
     sf::Vector2f GetPosition(){return body.getPosition();}
     void setPosition(sf::Vector2f position){ body.setPosition(position);}
     Collider GetCollider(){ return Collider(body);}
+    void setcolordamage(sf::Color);
+    /*bool collisions(Enemy e)
+    {
+        this->getGlo
+    }*/
 private:
     sf::RectangleShape body;
     Animation animation;

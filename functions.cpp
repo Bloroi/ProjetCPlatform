@@ -68,3 +68,5 @@ ostream& operator<<(ostream& os, const Platform& p)
     os <<p.name<<","<<p.filename<<","<<p.body.getSize().x <<","<<  p.body.getSize().y <<","<<p.body.getPosition().x<<","<<p.body.getPosition().y<<";"<<endl;
     return os;
 }
+
+

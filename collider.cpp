@@ -23,6 +23,8 @@ bool Collider::CheckCollision(Collider other,sf::Vector2f& direction, float push
     float intersectX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x);
     float intersectY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);
 
+
+
     if(intersectX < 0.0f && intersectY < 0.00f){
         push = std::min(std::max(push,0.0f),1.0f);
 
@@ -71,6 +73,8 @@ bool Collider::CheckCollision(Collider other,sf::Vector2f& direction, float push
 
 /**Cette méthode permet de vérifier la collision d'un joueur avec un item , pour lui permettre de le récupérer**/
 bool Collider::CheckCollect(Collider other){
+   // cout<<body.getPosition().x <<body.getPosition().y<<endl;
+
     sf::Vector2f otherPosition = other.GetPosition();
     sf::Vector2f otherHalfSize = other.GetHalfSize();
     sf::Vector2f thisPosition = GetPosition();
@@ -78,10 +82,10 @@ bool Collider::CheckCollect(Collider other){
 
     float deltaX = otherPosition.x - thisPosition.x;
     float deltaY = otherPosition.y - thisPosition.y;
-    float intersectX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x)+65;
-    float intersectY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y)+25;
+    float intersectX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x)+30;
+    float intersectY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);
 
-   // cout<<intersectX<<"-"<<intersectY<<endl;
+    cout<<intersectX<<"/"<<intersectY<<endl;
 
     if(intersectX < 0.0f && intersectY < 0.00f){
         return true;

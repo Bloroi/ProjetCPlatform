@@ -45,18 +45,16 @@ int main(){
     //Animation animation(&playerTexture, sf::Vector2u(9,5),0.3f);
     Player player(&playerTexture, sf::Vector2u(9,5),0.1f,350.0f,500.0f);
 
-    Enemy ennemi(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(2200.0f,250.0f),0.2f,250.0f);
-    std::vector<Enemy> enemies;
-    enemies.push_back(ennemi);
+    /*ENEMY*/
+    std::vector<Enemy*> enemies;
+    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(800.0f,425.0f),0.2f,250.0f));
 
-
+    /*PLATFORM*/
     std::vector<Platform> platforms;
-
-
-    //Lire plateforms
-
+    //Methode pour lire les platforms
     lirePlatform(platforms);
 
+     /*ITEMS*/
     std::vector<Item> items;
     items.push_back(Item(sf::Vector2f(80,80),sf::Vector2f(570,420)));
     //Ecrire
@@ -93,8 +91,22 @@ int main(){
                 break;
             }
         }
+        /*Personnage en mvt*/
         player.Update(deltaTime);
-        ennemi.Update(deltaTime);
+
+        for(int i=0;i<enemies.size();i++){
+            enemies[i]->Update(deltaTime);
+            if(enemies[i]->GetCollider().CheckCollect(player.GetCollider())){
+                //player.setPosition(sf::Vector2f(0.00f,0.00f));
+                //player.OnCollision(direction);
+                player.setcolordamage(sf::Color::Red);
+             }
+            else{
+                player.setcolordamage(sf::Color::White);
+            }
+        }
+
+
         sf::Vector2f direction;
 
 
@@ -103,8 +115,12 @@ int main(){
         {
             if(platform.GetCollider().CheckCollision(player.GetCollider(),direction,1.00f))
                 player.OnCollision(direction);
-            if(platform.GetCollider().CheckCollision(ennemi.GetCollider(),direction,1.00f))
-                ennemi.OnCollision(direction);
+
+            for(int i=0;i<enemies.size();i++)
+            {
+                if(platform.GetCollider().CheckCollision(enemies[i]->GetCollider(),direction,1.00f))
+                   enemies[i]->OnCollision(direction);
+            }
         }
 
         for(Item& item : items) // for each
@@ -113,12 +129,9 @@ int main(){
                 item.setPos(sf::Vector2f(0.00f,0.00f));
              }
         }
-        for(Enemy& en : enemies)
-        {
-            if(en.GetCollider().CheckCollect(player.GetCollider())){
-                player.setPosition(sf::Vector2f(0.00f,0.00f));
-             }
-        }
+
+
+
 
 /*        platform1.GetCollider().CheckCollision(player.GetCollider(),1.0f);
         platform2.GetCollider().CheckCollision(player.GetCollider(),0.1f);*/
@@ -142,7 +155,7 @@ int main(){
         window.clear(sf::Color(150,150,150));
         window.setView(view);
         player.Draw(window);
-        ennemi.Draw(window);
+        enemies[0]->Draw(window);
 
         for(Platform& platform : platforms){
             platform.Draw(window);
