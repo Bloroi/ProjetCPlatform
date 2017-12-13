@@ -23,7 +23,7 @@ Player::~Player(){
 
 void Player::setcolordamage(sf::Color color)
 {
-    body.setFillColor(color); ;
+    body.setFillColor(color);
 }
 
 /**Cette méthode agit si il y a collision avec une plateforme empêchant de bouger le personnage dans la direction de

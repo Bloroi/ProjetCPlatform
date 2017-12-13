@@ -65,6 +65,7 @@ int main(){
     std::vector<Enemy*> enemies;
     enemies.push_back(new Enemy(&enemyTexture2,sf::Vector2u(4,4), sf::Vector2f(100,150),sf::Vector2f(3100.0f,425.0f),0.2f,150.0f));
     enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(200,250),sf::Vector2f(3050.0f,425.0f),0.1f,250.0f));
+    enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(100,100),sf::Vector2f(2900.0f,425.0f),0.1f,250.0f));
  /*   enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3075.0f,425.0f),0.2f,250.0f));
     enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3055.0f,425.0f),0.2f,250.0f));
     enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3080.0f,425.0f),0.2f,250.0f));
@@ -117,8 +118,8 @@ int main(){
         }
         /*Personnage en mvt*/
         player.Update(deltaTime);
-
         for(int i=0;i<enemies.size();i++){
+
             enemies[i]->Update(deltaTime,platforms);
             if(enemies[i]->GetCollider().CheckCollect(player.GetCollider())){
                 //player.setPosition(sf::Vector2f(0.00f,0.00f));
