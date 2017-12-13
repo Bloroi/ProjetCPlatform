@@ -109,6 +109,10 @@ int main(){
 
         sf::Vector2f direction;
 
+        if(player.GetPosition().y > 1000){
+           player.setPosition(sf::Vector2f(206.0f,206.0f));
+        }
+
 
 
         for(Platform& platform : platforms) // for each
