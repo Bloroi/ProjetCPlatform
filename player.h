@@ -15,6 +15,7 @@ public:
     void OnCollision(sf::Vector2f direction);
 
     sf::Vector2f GetPosition(){return body.getPosition();}
+    void setPosition(sf::Vector2f position){ body.setPosition(position);}
     Collider GetCollider(){ return Collider(body);}
 private:
     sf::RectangleShape body;

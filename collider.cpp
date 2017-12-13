@@ -88,3 +88,7 @@ bool Collider::CheckCollect(Collider other){
     return false;
 }
 
+bool Collider::CheckWall(){
+
+}
+
