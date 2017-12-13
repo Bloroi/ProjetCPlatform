@@ -1,6 +1,6 @@
 #include "enemy.h"
 
-Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f position,float switchTime,float speed) :
+Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::Vector2f position,float switchTime,float speed) :
     animation(texture,imageCount,switchTime)
 {
     this->speed = speed;
@@ -8,10 +8,9 @@ Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f position,
     faceRight = true;
     body.setPosition(position);
 
-    body.setSize(sf::Vector2f(100.0f,150.0f));
+    body.setSize(size);
     body.setOrigin(body.getSize()/2.0f);
     body.setTexture(texture);
-    body.setFillColor(sf::Color::Blue);
     pos =0;
 }
 

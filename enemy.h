@@ -12,7 +12,7 @@ using namespace std;
 class Enemy
 {
 public:
-    Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f position,float switchTime,float speed);
+    Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::Vector2f position,float switchTime,float speed);
     ~Enemy();
 
     void Update(float deltaTime,vector<Platform> plats);
