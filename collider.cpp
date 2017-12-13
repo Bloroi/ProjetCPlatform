@@ -107,7 +107,7 @@ bool Collider::CheckOnPlatform(Collider other){
     float intersectX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x)+10;
     float intersectY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);
 
-    if(intersectX < 50 && intersectY<1)
+    //if(intersectX < 50 && intersectY<1)
        // cout<<intersectX<<"/"<<intersectY<<endl;
 
     if(intersectX < 0.0f && intersectY <= 0.00f){
@@ -117,7 +117,29 @@ bool Collider::CheckOnPlatform(Collider other){
     return false;
 }
 
-bool Collider::CheckWall(){
+bool Collider::CheckWalls(Collider other){
+   // cout<<body.getPosition().x <<body.getPosition().y<<endl;
 
+    sf::Vector2f otherPosition = other.GetPosition();
+    sf::Vector2f otherHalfSize = other.GetHalfSize();
+    sf::Vector2f thisPosition = GetPosition();
+    sf::Vector2f thisHalfSize = GetHalfSize();
+
+    float deltaX = otherPosition.x - thisPosition.x;
+    float deltaY = otherPosition.y - thisPosition.y;
+    float intersectX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x)-20;
+    float intersectY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);
+
+if(intersectX < 20 && intersectY<1)
+    cout<<intersectX<<"/"<<intersectY<<endl;
+
+    if(intersectX < 0.0f && intersectY < 0.00f){
+        return true;
+    }
+
+    return false;
 }
+
+
+
 

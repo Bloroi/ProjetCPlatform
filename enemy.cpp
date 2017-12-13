@@ -12,6 +12,7 @@ Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::
     body.setOrigin(body.getSize()/2.0f);
     body.setTexture(texture);
     pos =0;
+    //body.setFillColor(sf::Color::Red);
 }
 
 Enemy::~Enemy(){
@@ -60,11 +61,17 @@ if(velocity.y==0){
         for(int i=0;i<plats.size();i++)
         {
 
-            if(plats[i].GetCollider().CheckOnPlatform(this->GetCollider())){
+            if(plats[i].GetCollider().CheckOnPlatform(this->GetCollider()) ){
 
                moveOK=true;
                break;
 
+            }
+
+
+            if(plats[i].GetCollider().CheckWalls(this->GetCollider())){
+                pos=20000;
+                break;
             }
 
 
@@ -98,6 +105,11 @@ if(velocity.y==0){
                moveOK=true;
                break;
 
+            }
+
+            if(plats[i].GetCollider().CheckWalls(this->GetCollider())){
+                pos=0;
+                break;
             }
 
         }
