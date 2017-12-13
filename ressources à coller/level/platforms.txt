@@ -1,4 +1,4 @@
-images/ground.png,400,100,2700,150;
-images/ground.png,1000,300,500,650;
-images/ground2.jpg,1000,300,2000,650;
-images/ground.png,1,1000,-1,0;
+ground1,images/ground.png,400,100,2700,150;
+ground2,images/ground.png,1000,300,500,650;
+ground3,images/ground2.jpg,1000,300,2000,650;
+limit1gauche,images/ground.png,1,1000,-1,0;

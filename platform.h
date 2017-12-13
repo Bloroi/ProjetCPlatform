@@ -15,7 +15,7 @@ using std::string;
 class Platform
 {
 public:
-    Platform(string filename, sf::Vector2f size, sf::Vector2f position );
+    Platform(string name,string filename, sf::Vector2f size, sf::Vector2f position );
     ~Platform();
 
     void Draw(sf::RenderWindow& window);
@@ -26,6 +26,7 @@ public:
 
 private:
     sf::RectangleShape body;
+    string name;
     string filename;
 };
 

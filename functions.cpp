@@ -17,9 +17,10 @@ istream& operator>>(istream& is, Platform& p)
     return is;
 }*/
 
+/** Cette méthode permet de lire dans un fichier txt les informations sur les plateformes**/
 void lirePlatform(vector<Platform>& platforms){
-    string a,b,c,d,e,f;
-    float b1,c1,d1,e1;
+    string a,b,c,d,e,f,g;
+    float c1,d1,e1,f1;
 
     std::ifstream infile("level/platforms.txt");
 
@@ -27,41 +28,43 @@ void lirePlatform(vector<Platform>& platforms){
     getline(infile,b,',');
     getline(infile,c,',');
     getline(infile,d,',');
-    getline(infile,e,';');
-    getline(infile,f,'\n');
+    getline(infile,e,',');
+    getline(infile,f,';');
+    getline(infile,g,'\n');
 
-   std::cout<<a<<"|"<<b<<"|"<<c<<"|"<<d<<"|"<<e<<endl;
+   std::cout<<a<<"|"<<b<<"|"<<c<<"|"<<d<<"|"<<e<<"|"<<f<<endl;
 
-       b1 = std::stof(b);
        c1 = std::stof(c);
        d1 = std::stof(d);
        e1 = std::stof(e);
-       platforms.push_back(Platform(a,sf::Vector2f(b1,c1),sf::Vector2f(d1,e1)));
+       f1 = std::stof(f);
+       platforms.push_back(Platform(a,b,sf::Vector2f(c1,d1),sf::Vector2f(e1,f1)));
 
      while (a!=""){
 
-         std::cout<<a<<"|"<<b<<"|"<<c<<"|"<<d<<"|"<<e<<endl;
+        std::cout<<a<<"|"<<b<<"|"<<c<<"|"<<d<<"|"<<e<<"|"<<f<<endl;
 
-             b1 = std::stof(b);
-             c1 = std::stof(c);
-             d1 = std::stof(d);
-             e1 = std::stof(e);
-              platforms.push_back(Platform(a,sf::Vector2f(b1,c1),sf::Vector2f(d1,e1)));
+        c1 = std::stof(c);
+        d1 = std::stof(d);
+        e1 = std::stof(e);
+        f1 = std::stof(f);
+        platforms.push_back(Platform(a,b,sf::Vector2f(c1,d1),sf::Vector2f(e1,f1)));
 
-         getline(infile,a,',');
-         getline(infile,b,',');
-         getline(infile,c,',');
-         getline(infile,d,',');
-         getline(infile,e,';');
-         getline(infile,f,'\n');
+        getline(infile,a,',');
+        getline(infile,b,',');
+        getline(infile,c,',');
+        getline(infile,d,',');
+        getline(infile,e,',');
+        getline(infile,f,';');
+        getline(infile,g,'\n');
      }
 }
 
 
 
-
+/** Cette méthode permet d'écrire des plateformes dans un fichier txt**/
 ostream& operator<<(ostream& os, const Platform& p)
 {
-    os <<p.filename<<","<<p.body.getSize().x <<","<<  p.body.getSize().y <<","<<p.body.getPosition().x<<","<<p.body.getPosition().y<<";"<<endl;
+    os <<p.name<<","<<p.filename<<","<<p.body.getSize().x <<","<<  p.body.getSize().y <<","<<p.body.getPosition().x<<","<<p.body.getPosition().y<<";"<<endl;
     return os;
 }
