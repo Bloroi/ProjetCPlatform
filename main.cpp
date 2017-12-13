@@ -45,8 +45,9 @@ int main(){
     //Animation animation(&playerTexture, sf::Vector2u(9,5),0.3f);
     Player player(&playerTexture, sf::Vector2u(9,5),0.1f,350.0f,500.0f);
 
-    Enemy ennemi(&playerTexture, sf::Vector2u(9,5),0.2f,450.0f);
-
+    Enemy ennemi(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(2200.0f,250.0f),0.2f,250.0f);
+    std::vector<Enemy> enemies;
+    enemies.push_back(ennemi);
 
 
     std::vector<Platform> platforms;
@@ -101,10 +102,6 @@ int main(){
         }
 
 
-     /*   sf::Thread thread(ennemi.Update(deltaTime));
-
-        thread.launch();*/
-
 
         for(Platform& platform : platforms) // for each
         {
@@ -118,6 +115,12 @@ int main(){
         {
             if(item.GetCollider().CheckCollect(player.GetCollider())){
                 item.setPos(sf::Vector2f(0.00f,0.00f));
+             }
+        }
+        for(Enemy& en : enemies)
+        {
+            if(en.GetCollider().CheckCollect(player.GetCollider())){
+                player.setPosition(sf::Vector2f(0.00f,0.00f));
              }
         }
 
