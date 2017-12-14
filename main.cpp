@@ -14,6 +14,8 @@
 #include <fstream>
 #include <string>
 #include "enemy.h"
+#include "projectile.h"
+
 
 using namespace std;
 
@@ -29,14 +31,17 @@ int main(){
     sf::RenderWindow window(sf::VideoMode(512,512),"SFML Tutorial Youtube 2",sf::Style::Close | sf::Style::Resize);
     sf::View view(sf::Vector2f(0.0f,0.0f),sf::Vector2f(VIEW_HEIGHT,VIEW_HEIGHT));
     float aspectRatio;
+    bool isFiring = false;
    // sf::RectangleShape player(sf::Vector2f(100.0f,150.0f));
  //   player.setPosition(206.0f,206.0f);
     //sf::Sprite background;
+
+    /*TEXTURE*/
     sf::Texture playerTexture;
     sf::Texture enemyTexture1;
     sf::Texture enemyTexture2;
 
-
+    //PLAYER TEXTURE
     if(!playerTexture.loadFromFile("images/playerRedmond.png")){
         QFileInfo file("images/persogrille2.png");
         qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas";
@@ -44,6 +49,8 @@ int main(){
     playerTexture.setSmooth(true);
     //player.setTexture(&playerTexture);
 
+
+    //ENNEMY TEXTURE
     if(!enemyTexture1.loadFromFile("images/Dragon.png")){
         QFileInfo file("images/skeletona.png");
         qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas";
@@ -61,19 +68,20 @@ int main(){
     //Animation animation(&playerTexture, sf::Vector2u(9,5),0.3f);
     Player player(&playerTexture, sf::Vector2u(4,3),0.1f,350.0f,500.0f);
 
-    /*ENEMY*/
+    /*PROJECTILE*/
+    std::vector<Projectile> projectileVector;
+    sf::Texture projectileTexture;
+    if(!projectileTexture.loadFromFile("images/Boule_Feu.png")){
+        QFileInfo file("images/Boule_Feu.png");
+        qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas";
+    }
+
+    /*ENEMY LIST*/
     std::vector<Enemy*> enemies;
     enemies.push_back(new Enemy(&enemyTexture2,sf::Vector2u(4,4), sf::Vector2f(150,200),sf::Vector2f(3100.0f,425.0f),0.2f,150.0f));
     enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(200,250),sf::Vector2f(3050.0f,425.0f),0.1f,250.0f));
     enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(100,100),sf::Vector2f(2900.0f,425.0f),0.1f,250.0f));
- /*   enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3075.0f,425.0f),0.2f,250.0f));
-    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3055.0f,425.0f),0.2f,250.0f));
-    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3080.0f,425.0f),0.2f,250.0f));
-    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3085.0f,425.0f),0.2f,250.0f));
-    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3089.0f,425.0f),0.2f,250.0f));
-    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3088.0f,425.0f),0.2f,250.0f));
-    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3054.0f,425.0f),0.2f,250.0f));
-    enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3060.0f,425.0f),0.2f,250.0f));*/
+
     /*PLATFORM*/
     std::vector<Platform> platforms;
     //Methode pour lire les platforms
@@ -82,6 +90,8 @@ int main(){
      /*ITEMS*/
     std::vector<Item> items;
     items.push_back(Item(sf::Vector2f(80,80),sf::Vector2f(570,420)));
+
+
     //Ecrire
 /*
     string const filename("platforms.txt");
@@ -158,7 +168,12 @@ int main(){
                 item.setPos(sf::Vector2f(0.00f,0.00f));
              }
         }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
 
+            Projectile newProjectile(&projectileTexture,sf::Vector2f(20,70));
+            newProjectile.setPosition(sf::Vector2f(player.GetPosition()));
+            projectileVector.push_back(newProjectile);
+        }
 
 
 
@@ -199,7 +214,12 @@ int main(){
             item.Draw(window);
         }
 
+        for(int i=0;i< projectileVector.size();i++)
+        {
+            projectileVector[i].Draw(window);
+            projectileVector[i].fire(2);
 
+        }
 
       //  qDebug() << player.GetPosition().x << player.GetPosition().y;
        // qDebug() << view.getCenter().x << view.getCenter().y;
