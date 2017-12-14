@@ -104,7 +104,7 @@ bool Collider::CheckOnPlatform(Collider other){
 
     float deltaX = otherPosition.x - thisPosition.x;
     float deltaY = otherPosition.y - thisPosition.y;
-    float intersectX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x)+10;
+    float intersectX = abs(deltaX) - (otherHalfSize.x + thisHalfSize.x)+50;
     float intersectY = abs(deltaY) - (otherHalfSize.y + thisHalfSize.y);
 
     //if(intersectX < 50 && intersectY<1)

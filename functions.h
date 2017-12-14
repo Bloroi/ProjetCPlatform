@@ -9,7 +9,7 @@ using namespace std;
 
 ostream& operator<<(ostream& os, const Platform& p);
 //istream& operator>>(istream& is, Platform& p);
-void lirePlatform(vector<Platform>& platforms);
+void readPlatform(vector<Platform>& platforms);
 
 
 #endif // FUNCTIONS_H

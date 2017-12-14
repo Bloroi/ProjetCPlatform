@@ -18,7 +18,7 @@ istream& operator>>(istream& is, Platform& p)
 }*/
 
 /** Cette méthode permet de lire dans un fichier txt les informations sur les plateformes**/
-void lirePlatform(vector<Platform>& platforms){
+void readPlatform(vector<Platform>& platforms){
     string a,b,c,d,e,f,g;
     float c1,d1,e1,f1;
 
@@ -31,14 +31,6 @@ void lirePlatform(vector<Platform>& platforms){
     getline(infile,e,',');
     getline(infile,f,';');
     getline(infile,g,'\n');
-
-   std::cout<<a<<"|"<<b<<"|"<<c<<"|"<<d<<"|"<<e<<"|"<<f<<endl;
-
-       c1 = std::stof(c);
-       d1 = std::stof(d);
-       e1 = std::stof(e);
-       f1 = std::stof(f);
-       platforms.push_back(Platform(a,b,sf::Vector2f(c1,d1),sf::Vector2f(e1,f1)));
 
      while (a!=""){
 

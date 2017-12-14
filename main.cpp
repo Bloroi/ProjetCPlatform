@@ -37,7 +37,7 @@ int main(){
     sf::Texture enemyTexture2;
 
 
-    if(!playerTexture.loadFromFile("images/persogrille2.png")){
+    if(!playerTexture.loadFromFile("images/playerRedmond.png")){
         QFileInfo file("images/persogrille2.png");
         qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas";
     }
@@ -52,18 +52,18 @@ int main(){
 
 
     if(!enemyTexture2.loadFromFile("images/Serpent.png")){
-        QFileInfo file("images/Serpent.png");
+        QFileInfo file("images/Serpent2.png");
         qDebug() << file.absolutePath() << file.exists()<<"Fichier n'existe pas";
     }
     enemyTexture2.setSmooth(true);
 
 
     //Animation animation(&playerTexture, sf::Vector2u(9,5),0.3f);
-    Player player(&playerTexture, sf::Vector2u(9,5),0.1f,350.0f,500.0f);
+    Player player(&playerTexture, sf::Vector2u(4,3),0.1f,350.0f,500.0f);
 
     /*ENEMY*/
     std::vector<Enemy*> enemies;
-    enemies.push_back(new Enemy(&enemyTexture2,sf::Vector2u(4,4), sf::Vector2f(100,150),sf::Vector2f(3100.0f,425.0f),0.2f,150.0f));
+    enemies.push_back(new Enemy(&enemyTexture2,sf::Vector2u(4,4), sf::Vector2f(150,200),sf::Vector2f(3100.0f,425.0f),0.2f,150.0f));
     enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(200,250),sf::Vector2f(3050.0f,425.0f),0.1f,250.0f));
     enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(100,100),sf::Vector2f(2900.0f,425.0f),0.1f,250.0f));
  /*   enemies.push_back(new Enemy(&playerTexture, sf::Vector2u(9,5),sf::Vector2f(3075.0f,425.0f),0.2f,250.0f));
@@ -77,7 +77,7 @@ int main(){
     /*PLATFORM*/
     std::vector<Platform> platforms;
     //Methode pour lire les platforms
-    lirePlatform(platforms);
+    readPlatform(platforms);
 
      /*ITEMS*/
     std::vector<Item> items;
