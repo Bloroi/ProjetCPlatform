@@ -8,9 +8,9 @@ Player::Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,flo
     row = 0;
     faceRight = true;
 
-    body.setSize(sf::Vector2f(100.0f,150.0f));
+    body.setSize(sf::Vector2f(100.0f,180.0f));
     body.setOrigin(body.getSize()/2.0f);
-    body.setPosition(3100.0f,206.0f);
+    body.setPosition(400.0f,206.0f);
     body.setTexture(texture);
     //body.setFillColor(sf::Color::Blue);
 }
