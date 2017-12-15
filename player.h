@@ -16,6 +16,7 @@ public:
     void OnCollision(sf::Vector2f direction);
 
     sf::Vector2f GetPosition(){return body.getPosition();}
+    bool GetFaceRight(){return faceRight;}
     void setPosition(sf::Vector2f position){ body.setPosition(position);}
     Collider GetCollider(){ return Collider(body);}
     void setcolordamage(sf::Color);
@@ -33,6 +34,8 @@ private:
     sf::Vector2f velocity;
     bool canJump;
     float jumpHeight;
+
+
 
 
 };

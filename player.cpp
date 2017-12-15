@@ -85,6 +85,7 @@ void Player::Update(float deltaTime){
 
 
 
+
     velocity.y += 981.0f * deltaTime;
 
     if(velocity.x ==0.0f)
@@ -117,4 +118,5 @@ void Player::Update(float deltaTime){
 void Player::Draw(sf::RenderWindow& window){
     window.draw(body);
 }
+
 
