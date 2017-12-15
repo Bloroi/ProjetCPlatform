@@ -33,7 +33,8 @@ SOURCES += \
     collider.cpp \
     platform.cpp \
     functions.cpp \
-    enemy.cpp
+    enemy.cpp \
+    projectile.cpp
 
 
 HEADERS += \
@@ -43,7 +44,8 @@ HEADERS += \
     platform.h \
     functions.h \
     item.h \
-    enemy.h
+    enemy.h \
+    projectile.h
 
 
 FORMS += \

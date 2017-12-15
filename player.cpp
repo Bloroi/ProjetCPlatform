@@ -83,6 +83,8 @@ void Player::Update(float deltaTime){
         //square root (2.0f * gravity * jumpHeight);
     }
 
+
+
     velocity.y += 981.0f * deltaTime;
 
     if(velocity.x ==0.0f)
