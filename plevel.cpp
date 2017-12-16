@@ -7,8 +7,6 @@ PLevel::PLevel(sf::RenderWindow* window): PGame(window)
         readPlatform(platforms,"level/platforms.txt");
 
 
-
-
         //ENNEMY TEXTURE
         if(!enemyTexture1.loadFromFile("images/ogre.png")){
 

@@ -1,7 +1,9 @@
 #ifndef PANEL_H
 #define PANEL_H
-#include <sfml/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <button.h>
+
 
 class Panel
 {

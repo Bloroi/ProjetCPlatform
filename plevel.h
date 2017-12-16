@@ -8,6 +8,7 @@
 #include "functions.h"
 #include "item.h"
 #include "projectile.h"
+#include <SFML/Audio.hpp>
 
 using namespace std;
 
@@ -26,6 +27,8 @@ private :
     float deltaTime = 0.0f;
     sf::Clock clock;
     sf::Event event;
+
+
 public:
     PLevel(){}
     PLevel(sf::RenderWindow* window);
