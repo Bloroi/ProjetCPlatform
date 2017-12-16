@@ -1,6 +1,7 @@
-#ifndef PMENU_H
-#define PMENU_H
+#ifndef PACCUEIL_H
+#define PACCUEIL_H
 #include "panel.h"
+#include "pmenus.h"
 #include <SFML/Graphics.hpp>
 #include <QFileInfo>
 #include <QDebug>
@@ -10,16 +11,16 @@
 
 using namespace std;
 
-class PMenu : public Panel
+class PAccueil : public PMenus
 {
 private:
     sf::RectangleShape rect;
     vector<button*>buttons;
 public:
-    PMenu(){}
-    PMenu(sf::RenderWindow* window);
+    PAccueil(){}
+    PAccueil(sf::RenderWindow* window);
     //   PMenu(const PMenu& c);
-           ~PMenu();
+           ~PAccueil();
     //   PMenu& operator=(const PMenu& e);
     void init();
 
@@ -33,4 +34,4 @@ public:
 
 };
 
-#endif // PMENU_H
+#endif // PACCUEIL_H

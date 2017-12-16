@@ -1,6 +1,6 @@
-#include "pmenu.h"
+#include "paccueil.h"
 
-PMenu::PMenu(sf::RenderWindow* window) : Panel(window)
+PAccueil::PAccueil(sf::RenderWindow* window) : PMenus(window)
 {
 
 
@@ -30,21 +30,13 @@ PMenu& PMenu::operator=(const PMenu& b){
     return *this;
 }*/
 
-PMenu::~PMenu()
+PAccueil::~PAccueil()
 {}
 
-void PMenu::init()
+void PAccueil::init()
 {
+  //ResizeView();
 
-    sf::Event event;
-            while(mainWindow->pollEvent(event))
-            {
-                switch(event.type){
-                case sf::Event::Resized:
-                    ResizeView(*mainWindow,viewMenu,512.0f);
-                    break;
-                }
-            }
         aspectRatio = float(mainWindow->getSize().x)/float(mainWindow->getSize().y);
 
         mainWindow->setView(viewMenu);
@@ -66,7 +58,7 @@ void PMenu::init()
         mainWindow->draw(buttons.at(i)->getSprite());
 }
 
-PMenu::keyPressedOnce(){
+PAccueil::keyPressedOnce(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
         setActiveP(Panel::PSETTINGS);
     }

@@ -14,7 +14,7 @@ protected:
     sf::Vector2f worldPos;
 
     float aspectRatio;
-    sf::View viewMenu;
+
 
     float VIEW_GAME = 1600.0f;
     float VIEW_MENU = 512.0f;
@@ -35,7 +35,8 @@ public:
     //Listeners
 
     mouseClicked(button *btn);
-    void ResizeView(const sf::RenderWindow& window,sf::View& view,float heightView);
+    virtual void ResizeView(){}
+
 
 
     //Getters

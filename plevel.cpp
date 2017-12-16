@@ -76,16 +76,9 @@ void PLevel::init()
 {
 
     initDeltaTime();
+   // ResizeView(*mainWindow,viewGame,VIEW_GAME);
 
-    sf::Event event;
-            while(mainWindow->pollEvent(event))
-            {
-                switch(event.type){
-                case sf::Event::Resized:
-                    ResizeView(*mainWindow,viewGame,VIEW_GAME);
-                    break;
-                }
-            }
+
 
 
             /*Personnage en mvt*/
@@ -153,6 +146,7 @@ void PLevel::init()
 
                     aspectRatio = float(mainWindow->getSize().x)/float(mainWindow->getSize().y);
 
+                    //Empêche la caméra d'aller plus loin d'un certain x et y
                             viewGame.setCenter(player.GetPosition().x,player.GetPosition().y-200);
 
 

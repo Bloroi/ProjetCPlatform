@@ -16,7 +16,7 @@
 #include "enemy.h"
 #include "projectile.h"
 #include "panel.h"
-#include "pmenu.h"
+#include "paccueil.h"
 #include "psettings.h"
 #include "plevel.h"
 
@@ -31,11 +31,14 @@ int main(){
 
     int activePanel=0;
     vector<Panel*> panels;
-    panels.push_back(new PMenu(&window));
+    panels.push_back(new PAccueil(&window));
     panels.push_back(new PSettings(&window));
     panels.push_back(new PLevel(&window));
 
-
+    for(int i = 0;i<panels.size();i++)
+    {
+        panels[i]->ResizeView();
+    }
 
     while(window.isOpen())
     {
@@ -46,6 +49,13 @@ int main(){
             case sf::Event::Closed:
                 window.close();
                 break;
+            case sf::Event::Resized:
+                cout<<"salut"<<endl;
+                for(int i = 0;i<panels.size();i++)
+                {
+                    panels[i]->ResizeView();
+                }
+
             }
         }
 

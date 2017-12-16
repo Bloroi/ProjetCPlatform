@@ -36,11 +36,12 @@ SOURCES += \
     enemy.cpp \
     projectile.cpp \
     panel.cpp \
-    pmenu.cpp \
     psettings.cpp \
     button.cpp \
     pgame.cpp \
-    plevel.cpp
+    plevel.cpp \
+    pmenus.cpp \
+    paccueil.cpp
 
 HEADERS += \
     animation.h \
@@ -52,11 +53,12 @@ HEADERS += \
     enemy.h \
     projectile.h \
     panel.h \
-    pmenu.h \
     psettings.h \
     button.h \
     pgame.h \
-    plevel.h
+    plevel.h \
+    pmenus.h \
+    paccueil.h
 
 
 FORMS += \

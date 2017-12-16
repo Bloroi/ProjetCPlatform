@@ -5,7 +5,7 @@ PGame::PGame(sf::RenderWindow* window) : Panel(window)
 
 
 
-   this->viewGame = sf::View(sf::Vector2f(0.0f,0.0f),sf::Vector2f(Panel::VIEW_GAME,VIEW_GAME));
+  this->viewGame = sf::View(sf::Vector2f(0.0f,0.0f),sf::Vector2f(VIEW_GAME,VIEW_GAME));
   /*PLAYER*/
     if(!playerTexture.loadFromFile("images/playerRedmond.png")){
             QFileInfo file("images/persogrille2.png");
@@ -43,3 +43,10 @@ PGame& PGame::operator=(const PGame& b){
 
 PGame::~PGame()
 {}
+
+
+void PGame::ResizeView()
+{
+    float aspectRatio = float(mainWindow->getSize().x)/ float(mainWindow->getSize().y);
+    viewGame.setSize(VIEW_GAME * aspectRatio,VIEW_GAME);
+}

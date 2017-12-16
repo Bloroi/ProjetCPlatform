@@ -21,6 +21,7 @@ class PGame : public Panel
 //   PGame(const Panel& c);
        ~PGame();
 //   PGame& operator=(const PGame& e);
+     void ResizeView();
 };
 
 #endif // PGAME_H
