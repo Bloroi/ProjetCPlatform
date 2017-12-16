@@ -1,6 +1,6 @@
-#include "paccueil.h"
+#include "pwelcome.h"
 
-PAccueil::PAccueil(sf::RenderWindow* window) : PMenus(window)
+PWelcome::PWelcome(sf::RenderWindow* window) : PMenus(window)
 {
 
 
@@ -30,10 +30,10 @@ PMenu& PMenu::operator=(const PMenu& b){
     return *this;
 }*/
 
-PAccueil::~PAccueil()
+PWelcome::~PWelcome()
 {}
 
-void PAccueil::init()
+void PWelcome::init()
 {
   //ResizeView();
 
@@ -58,7 +58,7 @@ void PAccueil::init()
         mainWindow->draw(buttons.at(i)->getSprite());
 }
 
-PAccueil::keyPressedOnce(){
+PWelcome::keyPressedOnce(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
         setActiveP(Panel::PSETTINGS);
     }

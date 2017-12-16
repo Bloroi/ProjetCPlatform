@@ -214,8 +214,9 @@ void PLevel::init()
 
 
                             }
-                            keyPressedOnce();
+
                             }
+                            keyPressedOnce();
 
 }
 

@@ -16,7 +16,7 @@
 #include "enemy.h"
 #include "projectile.h"
 #include "panel.h"
-#include "paccueil.h"
+#include "pwelcome.h"
 #include "psettings.h"
 #include "plevel.h"
 
@@ -31,7 +31,7 @@ int main(){
 
     int activePanel=0;
     vector<Panel*> panels;
-    panels.push_back(new PAccueil(&window));
+    panels.push_back(new PWelcome(&window));
     panels.push_back(new PSettings(&window));
     panels.push_back(new PLevel(&window));
 

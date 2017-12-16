@@ -41,7 +41,7 @@ SOURCES += \
     pgame.cpp \
     plevel.cpp \
     pmenus.cpp \
-    paccueil.cpp
+    pwelcome.cpp
 
 HEADERS += \
     animation.h \
@@ -58,7 +58,7 @@ HEADERS += \
     pgame.h \
     plevel.h \
     pmenus.h \
-    paccueil.h
+    pwelcome.h
 
 
 FORMS += \

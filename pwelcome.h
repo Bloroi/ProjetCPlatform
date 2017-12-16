@@ -1,5 +1,5 @@
-#ifndef PACCUEIL_H
-#define PACCUEIL_H
+#ifndef PWELCOME_H
+#define PWELCOME_H
 #include "panel.h"
 #include "pmenus.h"
 #include <SFML/Graphics.hpp>
@@ -11,16 +11,16 @@
 
 using namespace std;
 
-class PAccueil : public PMenus
+class PWelcome : public PMenus
 {
 private:
     sf::RectangleShape rect;
     vector<button*>buttons;
 public:
-    PAccueil(){}
-    PAccueil(sf::RenderWindow* window);
+    PWelcome(){}
+    PWelcome(sf::RenderWindow* window);
     //   PMenu(const PMenu& c);
-           ~PAccueil();
+           ~PWelcome();
     //   PMenu& operator=(const PMenu& e);
     void init();
 
@@ -34,4 +34,4 @@ public:
 
 };
 
-#endif // PACCUEIL_H
+#endif // PWELCOME_H
