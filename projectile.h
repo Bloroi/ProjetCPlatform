@@ -1,7 +1,7 @@
 #ifndef PROJECTILE_H
 #define PROJECTILE_H
 #include<SFML/Graphics.hpp>
-
+#include <collider.h>
 class Projectile
 {
     private:
@@ -17,7 +17,7 @@ class Projectile
         void fire();
 
         void Draw(sf::RenderWindow& window);
-
+        Collider GetCollider(){ return Collider(projectile);}
         void setPosition(sf::Vector2f newPos);
          sf::Vector2f GetPosition(){return projectile.getPosition();}
 };

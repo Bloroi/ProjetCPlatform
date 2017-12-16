@@ -1,9 +1,10 @@
 #include "enemy.h"
 
-Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::Vector2f position,float switchTime,float speed) :
+Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::Vector2f position,float switchTime,float speed, int health) :
     animation(texture,imageCount,switchTime)
 {
     this->speed = speed;
+    this->health = health;
     row = 0;
     faceRight = true;
     body.setPosition(position);

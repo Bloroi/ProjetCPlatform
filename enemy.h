@@ -13,7 +13,7 @@ class Enemy
 {
 public:
     Enemy(){}
-    Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::Vector2f position,float switchTime,float speed);
+    Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::Vector2f position,float switchTime,float speed,int heath);
     // Enemy(const Enemy& c);
       ~Enemy();
   //    Enemy& operator=(const Enemy& e);
@@ -22,7 +22,8 @@ public:
     void Draw(sf::RenderWindow& window);
     void OnCollision(sf::Vector2f direction);
 
-
+    int getHealth()const{return health;}
+    void setHealth(int newHealth){health = newHealth;}
     sf::Vector2f GetPosition(){return body.getPosition();}
     Collider GetCollider(){ return Collider(body);}
 private:
@@ -32,7 +33,7 @@ private:
     float speed;
     bool faceRight;
     int pos;
-
+    int health;
     sf::Vector2f velocity;
     sf::Vector2f position;
 
