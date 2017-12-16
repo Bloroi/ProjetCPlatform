@@ -37,6 +37,37 @@ PLevel::PLevel(sf::RenderWindow* window): PGame(window)
 
 
 }
+/*PLevel::PLevel(const PLevel& b){
+
+        readPlatform(platforms,"level/platforms.txt");
+        this->enemyTexture1= b.enemyTexture1;
+        this->enemyTexture2= b.enemyTexture2;
+
+        this->projectileTexture= b.projectileTexture;
+
+        this->ennemies = b.ennemies;
+
+        this->items= b.items;
+
+}
+
+PLevel& PLevel::operator=(const PLevel& b){
+    if(!(&b==this)){
+
+        readPlatform(platforms,"level/platforms.txt");
+        this->enemyTexture1= b.enemyTexture1;
+        this->enemyTexture2= b.enemyTexture2;
+
+        this->projectileTexture= b.projectileTexture;
+
+        this->ennemies = b.ennemies;
+
+        this->items= b.items;
+
+
+    }
+    return *this;
+}*/
 
 PLevel::~PLevel()
 {}

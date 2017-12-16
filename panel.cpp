@@ -8,6 +8,25 @@ Panel::Panel(sf::RenderWindow* window)
     this->viewMenu = sf::View(sf::Vector2f(0.0f,0.0f),sf::Vector2f(VIEW_MENU,VIEW_MENU));
 }
 
+/*Panel::Panel(const Panel& b){
+
+    this->mainWindow = b.mainWindow;
+    this->viewMenu = b.viewMenu;
+
+}
+
+Panel& Panel::operator=(const Panel& b){
+    if(!(&b==this)){
+
+    this->mainWindow = b.mainWindow;
+    this->viewMenu = b.viewMenu;
+
+
+    }
+    return *this;
+}*/
+
+
 Panel::~Panel()
 {
 

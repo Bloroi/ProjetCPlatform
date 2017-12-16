@@ -7,6 +7,22 @@ Projectile::Projectile(sf::Texture* texture,sf::Vector2f size, int speed){
    this->speed=speed;
 }
 
+/*Projectile::Projectile(const Projectile& b){
+
+    this->rect=b.rect;
+    this->buttons=b.buttons;
+
+}
+
+Projectile& Projectile::operator=(const Projectile& b){
+   projectile.setSize(size);
+   projectile.setTexture(texture);
+   this->speed=b.speed;
+}*/
+
+Projectile::~Projectile()
+{}
+
 /*Méthode pour faire bouger le projectile à une certaine vitesse*/
 void Projectile::fire(){
 

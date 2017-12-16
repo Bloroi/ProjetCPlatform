@@ -16,5 +16,30 @@ PGame::PGame(sf::RenderWindow* window) : Panel(window)
   this->player = Player(&playerTexture, sf::Vector2u(4,3),0.1f,350.0f,500.0f);
 }
 
+/*PGame::PGame(const PGame& b){
+
+   this->viewGame = b.viewGame;
+    this->playerTexture = b.playerTexture;
+    playerTexture.setSmooth(true);
+
+  this->player = b.player;
+
+}
+
+PGame& PGame::operator=(const PGame& b){
+    if(!(&b==this)){
+
+   this->viewGame = b.viewGame;
+    this->playerTexture = b.playerTexture;
+    playerTexture.setSmooth(true);
+
+  this->player = b.player;
+
+
+
+    }
+    return *this;
+}*/
+
 PGame::~PGame()
 {}

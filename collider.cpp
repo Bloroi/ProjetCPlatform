@@ -6,6 +6,21 @@ Collider:: Collider(sf::RectangleShape& body) :
 
 }
 
+/*Collider::Collider(const Collider& b){
+
+    this->body(b.body);
+
+}
+
+Collider& Collider::operator=(const Collider& b){
+    if(!(&b==this)){
+
+        this->body(b.body);
+
+    }
+    return *this;
+}*/
+
 Collider::~Collider(){
 
 }

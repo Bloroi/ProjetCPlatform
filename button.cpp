@@ -29,6 +29,36 @@ button::button(string name,int todo,float size,sf::Vector2i pos,string path,stri
     this->setPosition(pos.x,pos.y);
 
 }
+button::button(const button& b){
+
+    this->textureNormal= b.textureNormal;
+    this->textureNormal.setSmooth(true);
+    this->sprite= b.sprite;
+
+    this->textureClicked=b.textureClicked;
+    this->textureClicked.setSmooth(true);
+
+    this->name = b.name;
+    this->todo = b.todo;
+
+}
+
+button& button::operator=(const button& b){
+    if(!(&b==this)){
+        this->textureNormal= b.textureNormal;
+        this->textureNormal.setSmooth(true);
+        this->sprite= b.sprite;
+
+        this->textureClicked=b.textureClicked;
+        this->textureClicked.setSmooth(true);
+
+        this->name = b.name;
+        this->todo = b.todo;
+
+    }
+    return *this;
+}
+
 
 void button::changeTexture(bool selected){
     if(selected){

@@ -5,7 +5,13 @@ PSettings::PSettings(sf::RenderWindow* window) : Panel(window)
 
 }
 
+/*PSettings::PSettings(const PSettings& b){
 
+}
+
+PSettings& PSettings::operator=(const PSettings& b){
+
+}*/
 
 
 PSettings::~PSettings()

@@ -21,7 +21,32 @@ Player::Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,flo
     body.setTexture(texture);
     //body.setFillColor(sf::Color::Blue);
 }
+/*Player::Player(const Player& b){
 
+  this->animation= b.animation;
+
+    this->speed = b.speed;
+    this->jumpHeight = b.jumpHeight;
+    this->row = 0;
+    this->faceRight = true;
+    this->body= b.body;
+}
+
+Player& Player::operator=(const Player& b){
+    if(!(&b==this)){
+
+  this->animation= b.animation;
+
+    this->speed = b.speed;
+    this->jumpHeight = b.jumpHeight;
+    this->row = 0;
+    this->faceRight = true;
+    this->body= b.body;;
+
+
+    }
+    return *this;
+}*/
 
 
 Player::~Player(){

@@ -9,8 +9,11 @@ using namespace std;
 class Collider
 {
 public:
+    //Collider(){}
     Collider(sf::RectangleShape& body);
-    ~Collider();
+    // Collider(const Collider& c);
+      ~Collider();
+  //    Collider& operator=(const Collider& e);
 
     void Move(float dx,float dy){ body.move(dx,dy);}
 

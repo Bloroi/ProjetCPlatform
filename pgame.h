@@ -16,9 +16,11 @@ class PGame : public Panel
      sf::View viewGame;
      Player player;
     public:
-
+     PGame(){}
      PGame(sf::RenderWindow* window);
-     ~PGame();
+//   PGame(const Panel& c);
+       ~PGame();
+//   PGame& operator=(const PGame& e);
 };
 
 #endif // PGAME_H

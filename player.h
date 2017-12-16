@@ -10,8 +10,9 @@ class Player
 public:
     Player();
     Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,float speed,float jumpHeight);
-    ~Player();
-
+    //   Player(const Player& c);
+           ~Player();
+    //   Player& operator=(const Player& e);
     void Update(float deltaTime);
     void Draw(sf::RenderWindow& window);
     void OnCollision(sf::Vector2f direction);

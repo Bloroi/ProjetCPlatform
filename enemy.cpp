@@ -15,6 +15,33 @@ Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::
     //body.setFillColor(sf::Color::Red);
 }
 
+/*Enemy::Enemy(const Enemy& b){
+
+    this->speed = b.speed;
+    this->row = 0;
+    thiw->faceRight = true;
+    this->body.setPosition(b.position);
+
+    this->body=b.body;
+    pos =0;
+
+}
+
+Enemy& Enemy::operator=(const Enemy& b){
+    if(!(&b==this)){
+
+    this->speed = b.speed;
+    this->row = 0;
+    thiw->faceRight = true;
+    this->body.setPosition(b.position);
+
+    this->body=b.body;
+    pos =0;
+
+    }
+    return *this;
+}*/
+
 Enemy::~Enemy(){
 
 }

@@ -26,8 +26,11 @@ private :
     float deltaTime = 0.0f;
     sf::Clock clock;
 public:
+    PLevel(){}
     PLevel(sf::RenderWindow* window);
-    ~PLevel();
+    //   PLevel(const PLevel& c);
+           ~PLevel();
+    //   PLevel& operator=(const PLevel& e);
     void init();
     keyPressedOnce();
     void initDeltaTime();

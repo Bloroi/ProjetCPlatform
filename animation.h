@@ -11,7 +11,9 @@ class Animation
 public:
     Animation();
     Animation(sf::Texture* texture,sf::Vector2u imageCount,float switchTime);
+  //  Animation(const Animation& an);
     ~Animation();
+//    Animation& operator=(const Animation& e);
 
     void Update(int row, float deltaTime,bool faceRight);
     void setSwitchTime(float switchTime){this->switchTime = switchTime;}

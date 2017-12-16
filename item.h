@@ -12,6 +12,7 @@ using namespace std;
 
 class Item{
 public:
+    Item(){}
     Item(sf::Vector2f size,sf::Vector2f pos){
         item.setSize(size);
         //coin.setFillColor(sf::Color::Yellow);
@@ -22,6 +23,10 @@ public:
 
         item.setTexture(texture);
     }
+
+    // Item(const Item& c);
+      ~Item(){}
+  //    Item& operator=(const Item& e);
 
     void Draw(sf::RenderWindow &window){
         window.draw(item);

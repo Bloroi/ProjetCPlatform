@@ -11,8 +11,11 @@ class PSettings : public Panel
 private:
     int activeP=0;
 public:
+    PSettings(){}
     PSettings(sf::RenderWindow* window);
+    //   PSettings(const PSettings& c);
     ~PSettings();
+    //   PSettings& operator=(const PSettings& e);
     void init();
 
     //Listeners

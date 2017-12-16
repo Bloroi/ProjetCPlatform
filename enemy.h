@@ -12,8 +12,11 @@ using namespace std;
 class Enemy
 {
 public:
+    Enemy(){}
     Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::Vector2f position,float switchTime,float speed);
-    ~Enemy();
+    // Enemy(const Enemy& c);
+      ~Enemy();
+  //    Enemy& operator=(const Enemy& e);
 
     void Update(float deltaTime,vector<Platform> plats);
     void Draw(sf::RenderWindow& window);

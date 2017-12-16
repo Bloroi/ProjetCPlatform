@@ -16,8 +16,11 @@ private:
     sf::RectangleShape rect;
     vector<button*>buttons;
 public:
+    PMenu(){}
     PMenu(sf::RenderWindow* window);
-    ~PMenu();
+    //   PMenu(const PMenu& c);
+           ~PMenu();
+    //   PMenu& operator=(const PMenu& e);
     void init();
 
     //Listeners

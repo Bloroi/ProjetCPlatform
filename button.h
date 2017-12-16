@@ -17,8 +17,13 @@ private:
     int todo;
     string name;
 public:
+    button(){}
     button(string name,int todo,float size,sf::Vector2i pos,string path="0",string pathSelected="0");
     ~button(){}
+    button( const button& b);
+    button& operator=(const button& e);
+
+
     void changeTexture(bool selected);
     bool isSelected(int x,int y);
 

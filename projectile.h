@@ -9,8 +9,11 @@ class Projectile
         int speed;
 
     public:
+        Projectile(){}
         Projectile(sf::Texture* texture,sf::Vector2f size, int speed);
-
+        //   Projectile(const Projectile& c);
+               ~Projectile();
+        //   Projectile& operator=(const Projectile& e);
         void fire();
 
         void Draw(sf::RenderWindow& window);

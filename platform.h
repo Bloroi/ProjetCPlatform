@@ -15,8 +15,11 @@ using std::string;
 class Platform
 {
 public:
+    Platform(){}
     Platform(string name,string filename, sf::Vector2f size, sf::Vector2f position );
-    ~Platform();
+    //   Platform(const Platform& c);
+           ~Platform();
+    //   Platform& operator=(const Platform& e);
 
     void Draw(sf::RenderWindow& window);
     Collider GetCollider(){return Collider(body);}

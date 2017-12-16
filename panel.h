@@ -20,9 +20,11 @@ protected:
     float VIEW_MENU = 512.0f;
 
 public:
-
+    Panel(){}
     Panel(sf::RenderWindow* window);
-    ~Panel();
+    // Panel(const Panel& c);
+      ~Panel();
+  //    Panel& operator=(const Panel& e);
     enum{
         PMENU,
         PSETTINGS,
