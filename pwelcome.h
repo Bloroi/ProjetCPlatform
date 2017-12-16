@@ -29,7 +29,7 @@ public:
 
 
     //Getters
-    int getType()const{return 0;}
+    int getType()const{return PWELCOME;}
     //sf::RenderWindow* getWindow() const{return mainWindow;}
 
 };

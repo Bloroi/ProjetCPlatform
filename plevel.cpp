@@ -224,7 +224,7 @@ void PLevel::init()
 
 PLevel::keyPressedOnce(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-        setActiveP(Panel::PMENU);
+        setActiveP(Panel::PWELCOME);
     }
 }
 

@@ -8,10 +8,13 @@
 
 using namespace std;
 
+
+
 class PMenus : public Panel
 {
 protected:
     sf::View viewMenu;
+    sf::Font arial;
 
 public:
     PMenus(){}

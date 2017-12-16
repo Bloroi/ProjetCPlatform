@@ -19,12 +19,12 @@ public:
     void init();
 
     //Listeners
-    int keyPressedOnce();
+    keyPressedOnce();
     int mouseClicked();
 
 
     //Getters
-    int getType()const{return 1;}
+    int getType()const{return PSETTINGS;}
     //sf::RenderWindow* getWindow() const{return mainWindow;}
 
 };

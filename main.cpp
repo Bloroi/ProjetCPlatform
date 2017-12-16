@@ -19,6 +19,7 @@
 #include "pwelcome.h"
 #include "psettings.h"
 #include "plevel.h"
+#include "pabout.h"
 
 
 using namespace std;
@@ -33,7 +34,9 @@ int main(){
     vector<Panel*> panels;
     panels.push_back(new PWelcome(&window));
     panels.push_back(new PSettings(&window));
+    panels.push_back(new PAbout(&window));
     panels.push_back(new PLevel(&window));
+
 
     for(int i = 0;i<panels.size();i++)
     {

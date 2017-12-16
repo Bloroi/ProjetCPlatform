@@ -35,7 +35,7 @@ public:
     void init();
     keyPressedOnce();
     void initDeltaTime();
-    int getType()const{return 2;}
+    int getType()const{return PLEVEL1;}
 
 };
 

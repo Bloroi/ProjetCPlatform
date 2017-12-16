@@ -26,8 +26,9 @@ public:
       ~Panel();
   //    Panel& operator=(const Panel& e);
     enum{
-        PMENU,
+        PWELCOME,
         PSETTINGS,
+        PABOUT,
         PLEVEL1
     };
     virtual void init()=0;
