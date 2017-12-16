@@ -34,8 +34,13 @@ SOURCES += \
     platform.cpp \
     functions.cpp \
     enemy.cpp \
-    projectile.cpp
-
+    projectile.cpp \
+    panel.cpp \
+    pmenu.cpp \
+    psettings.cpp \
+    button.cpp \
+    pgame.cpp \
+    plevel.cpp
 
 HEADERS += \
     animation.h \
@@ -45,7 +50,13 @@ HEADERS += \
     functions.h \
     item.h \
     enemy.h \
-    projectile.h
+    projectile.h \
+    panel.h \
+    pmenu.h \
+    psettings.h \
+    button.h \
+    pgame.h \
+    plevel.h
 
 
 FORMS += \

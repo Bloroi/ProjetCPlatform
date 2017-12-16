@@ -18,11 +18,11 @@ istream& operator>>(istream& is, Platform& p)
 }*/
 
 /** Cette méthode permet de lire dans un fichier txt les informations sur les plateformes**/
-void readPlatform(vector<Platform>& platforms){
+void readPlatform(vector<Platform>& platforms,string filepath){
     string a,b,c,d,e,f,g;
     float c1,d1,e1,f1;
 
-    std::ifstream infile("level/platforms.txt");
+    std::ifstream infile(filepath);
 
     getline(infile,a,',');
     getline(infile,b,',');

@@ -1,5 +1,12 @@
 #include "player.h"
 
+Player::Player() :
+    animation()
+{
+
+}
+
+
 Player::Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,float speed,float jumpHeight) :
     animation(texture,imageCount,switchTime)
 {
@@ -10,7 +17,7 @@ Player::Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,flo
 
     body.setSize(sf::Vector2f(100.0f,180.0f));
     body.setOrigin(body.getSize()/2.0f);
-    body.setPosition(400.0f,206.0f);
+   // body.setPosition(400.0f,206.0f);
     body.setTexture(texture);
     //body.setFillColor(sf::Color::Blue);
 }

@@ -8,6 +8,7 @@
 class Player
 {
 public:
+    Player();
     Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,float speed,float jumpHeight);
     ~Player();
 
