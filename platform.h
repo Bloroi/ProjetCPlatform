@@ -20,6 +20,8 @@ public:
     //   Platform(const Platform& c);
            ~Platform();
     //   Platform& operator=(const Platform& e);
+    string getName()const{return name;}
+
 
     void Draw(sf::RenderWindow& window);
     Collider GetCollider(){return Collider(body);}

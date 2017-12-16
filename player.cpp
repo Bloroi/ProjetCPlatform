@@ -7,11 +7,15 @@ Player::Player() :
 }
 
 
-Player::Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,float speed,float jumpHeight) :
+Player::Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,float speed,float jumpHeight, int score, int health, bool key) :
     animation(texture,imageCount,switchTime)
 {
     this->speed = speed;
     this->jumpHeight = jumpHeight;
+    this->health = health;
+    this->score = score;
+    this->key = key;
+
     row = 0;
     faceRight = true;
 
