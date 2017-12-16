@@ -40,7 +40,12 @@ Panel::mouseClicked(button *btn){
         btn->changeTexture(true);
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
+            se->playClick();
             setActiveP(btn->getTodo());
+            if(btn->getTodo()==3)
+            {
+                se->goMusic("music/level1.wav");
+            }
         }
     }else{
         btn->changeTexture(false);

@@ -42,7 +42,8 @@ SOURCES += \
     plevel.cpp \
     pmenus.cpp \
     pwelcome.cpp \
-    pabout.cpp
+    pabout.cpp \
+    soundengine.cpp
 
 HEADERS += \
     animation.h \
@@ -60,7 +61,8 @@ HEADERS += \
     plevel.h \
     pmenus.h \
     pwelcome.h \
-    pabout.h
+    pabout.h \
+    soundengine.h
 
 
 FORMS += \

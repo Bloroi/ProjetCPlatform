@@ -4,6 +4,7 @@
 #include "animation.h"
 #include "collider.h"
 #include "enemy.h"
+#include "soundengine.h"
 
 class Player
 {
@@ -44,6 +45,7 @@ private:
     float jumpHeight;
     int health;
     int score;
+    SoundEngine *se = SoundEngine::getInstance();
 
 
 

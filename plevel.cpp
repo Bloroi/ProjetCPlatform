@@ -122,6 +122,7 @@ void PLevel::init()
                         if(item.GetCollider().CheckCollect(player.GetCollider())){
                             item.setPos(sf::Vector2f(0.00f,0.00f));
                             player.setKey(true);
+                            se->playPickItem();
 
                             for(int i=0;i<platforms.size();i++)
                             {

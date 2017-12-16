@@ -20,6 +20,7 @@
 #include "psettings.h"
 #include "plevel.h"
 #include "pabout.h"
+#include "soundengine.h"
 
 
 using namespace std;
@@ -29,7 +30,10 @@ using namespace std;
 
 int main(){
     sf::RenderWindow window(sf::VideoMode(800,600),"The Legend of HELHa",sf::Style::Close | sf::Style::Resize);
+    SoundEngine *se = SoundEngine::getInstance();
+    se->goMusic("music/mainTheme.wav");
 
+    //Ajout des différents panels
     int activePanel=0;
     vector<Panel*> panels;
     panels.push_back(new PWelcome(&window));
@@ -53,13 +57,17 @@ int main(){
                 window.close();
                 break;
             case sf::Event::Resized:
-                cout<<"salut"<<endl;
                 for(int i = 0;i<panels.size();i++)
                 {
                     panels[i]->ResizeView();
                 }
+                break;
+            case sf::Event::LostFocus:
+                panels[activePanel]->setActiveP(0);
+                break;
 
             }
+
         }
 
         activePanel=panels[activePanel]->getActiveP();
