@@ -21,6 +21,7 @@ private:
     float jumpHeight;
     int health;
     int score;
+    SoundEngine *se = SoundEngine::getInstance();
 
 public:
     /*FORME CANONIQUE*/
@@ -50,25 +51,6 @@ public:
     {
         this->getGlo
     }*/
-<<<<<<< HEAD
-=======
-private:
-    sf::RectangleShape body;
-    Animation animation;
-    unsigned int row;
-    float speed;
-    bool faceRight;
-    bool key;
-    sf::Vector2f velocity;
-    bool canJump;
-    float jumpHeight;
-    int health;
-    int score;
-    SoundEngine *se = SoundEngine::getInstance();
-
-
-
->>>>>>> da6975e09dce3ec15e082018c6fc15ed90d009c7
 
 };
 

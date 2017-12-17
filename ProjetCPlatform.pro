@@ -43,11 +43,8 @@ SOURCES += \
     pmenus.cpp \
     pwelcome.cpp \
     pabout.cpp \
-<<<<<<< HEAD
-    item.cpp
-=======
+    item.cpp\
     soundengine.cpp
->>>>>>> da6975e09dce3ec15e082018c6fc15ed90d009c7
 
 HEADERS += \
     animation.h \
