@@ -9,13 +9,15 @@ class Projectile
         int speed;
 
     public:
+        /*FORME CANONIQUE*/
         Projectile(){}
         Projectile(sf::Texture* texture,sf::Vector2f size, int speed);
-        //   Projectile(const Projectile& c);
-               ~Projectile();
-        //   Projectile& operator=(const Projectile& e);
-        void fire();
+       // Projectile(const Projectile& c);
+        ~Projectile();
+       // Projectile& operator=(const Projectile& e);
 
+
+        void fire();
         void Draw(sf::RenderWindow& window);
         Collider GetCollider(){ return Collider(projectile);}
         void setPosition(sf::Vector2f newPos);

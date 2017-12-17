@@ -7,8 +7,6 @@ PLevel::PLevel(sf::RenderWindow* window): PGame(window)
         readPlatform(platforms,"level/platforms.txt");
 
 
-
-
         //ENNEMY TEXTURE
         if(!enemyTexture1.loadFromFile("images/ogre.png")){
 
@@ -48,7 +46,7 @@ PLevel::PLevel(sf::RenderWindow* window): PGame(window)
 
 
 }
-/*PLevel::PLevel(const PLevel& b){
+PLevel::PLevel(const PLevel& b){
 
         readPlatform(platforms,"level/platforms.txt");
         this->enemyTexture1= b.enemyTexture1;
@@ -56,7 +54,7 @@ PLevel::PLevel(sf::RenderWindow* window): PGame(window)
 
         this->projectileTexture= b.projectileTexture;
 
-        this->ennemies = b.ennemies;
+        this->enemies = b.enemies;
 
         this->items= b.items;
 
@@ -71,18 +69,19 @@ PLevel& PLevel::operator=(const PLevel& b){
 
         this->projectileTexture= b.projectileTexture;
 
-        this->ennemies = b.ennemies;
+        this->enemies = b.enemies;
 
         this->items= b.items;
 
 
     }
     return *this;
-}*/
+}
 
 PLevel::~PLevel()
 {}
-
+/*Méthode qui est appelée tout le temps dans le jeu.
+ * Sorte de main pour une classe*/
 void PLevel::init()
 {
     int shoottimer = 0;
@@ -142,6 +141,7 @@ void PLevel::init()
                         if(item.GetCollider().CheckCollect(player.GetCollider())){
                             item.setPos(sf::Vector2f(0.00f,0.00f));
                             player.setKey(true);
+                            se->playPickItem();
 
                             for(int i=0;i<platforms.size();i++)
                             {
@@ -214,7 +214,11 @@ void PLevel::init()
                             for(int i=0;i< projectileVector.size();i++)
                             {
 
+<<<<<<< HEAD
                                 if(projectileVector[i].GetPosition().x>( player.GetPosition().x + 500)){
+=======
+                                if(projectileVector[i].GetPosition().x>( player.GetPosition().x+250)){
+>>>>>>> b364c1339a3e2c26e89f24373b0100ad62a5b650
                                     projectileVector.erase(projectileVector.begin()+i);
                                 }
                                 else
@@ -232,8 +236,9 @@ void PLevel::init()
 
 
                             }
-                            keyPressedOnce();
+
                             }
+                            keyPressedOnce();
 
 }
 
@@ -241,10 +246,11 @@ void PLevel::init()
 
 PLevel::keyPressedOnce(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-        setActiveP(Panel::PMENU);
+        setActiveP(Panel::PWELCOME);
     }
 }
 
+/*Initialiser le delta time*/
 void PLevel::initDeltaTime(){
  deltaTime = clock.restart().asSeconds();
         if(deltaTime > 1.0f /20.0f){

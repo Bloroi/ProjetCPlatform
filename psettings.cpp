@@ -5,13 +5,13 @@ PSettings::PSettings(sf::RenderWindow* window) : Panel(window)
 
 }
 
-/*PSettings::PSettings(const PSettings& b){
+PSettings::PSettings(const PSettings& b){
 
 }
 
 PSettings& PSettings::operator=(const PSettings& b){
 
-}*/
+}
 
 
 PSettings::~PSettings()
@@ -30,9 +30,7 @@ void PSettings::init()
 }
 
 PSettings::keyPressedOnce(){
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-        setActiveP(Panel::PMENU);
-        return Panel::PMENU;
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+        setActiveP(Panel::PWELCOME);
     }
-    return -1;
 }

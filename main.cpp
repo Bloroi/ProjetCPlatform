@@ -16,9 +16,11 @@
 #include "enemy.h"
 #include "projectile.h"
 #include "panel.h"
-#include "paccueil.h"
+#include "pwelcome.h"
 #include "psettings.h"
 #include "plevel.h"
+#include "pabout.h"
+#include "soundengine.h"
 
 
 using namespace std;
@@ -28,12 +30,18 @@ using namespace std;
 
 int main(){
     sf::RenderWindow window(sf::VideoMode(800,600),"The Legend of HELHa",sf::Style::Close | sf::Style::Resize);
+    SoundEngine *se = SoundEngine::getInstance();
+    se->goMusic("music/mainTheme.wav");
 
+    //Ajout des différents panels
     int activePanel=0;
+    //Ajout des panels
     vector<Panel*> panels;
-    panels.push_back(new PAccueil(&window));
+    panels.push_back(new PWelcome(&window));
     panels.push_back(new PSettings(&window));
+    panels.push_back(new PAbout(&window));
     panels.push_back(new PLevel(&window));
+
 
     for(int i = 0;i<panels.size();i++)
     {
@@ -50,13 +58,17 @@ int main(){
                 window.close();
                 break;
             case sf::Event::Resized:
-                cout<<"salut"<<endl;
                 for(int i = 0;i<panels.size();i++)
                 {
                     panels[i]->ResizeView();
                 }
+                break;
+            case sf::Event::LostFocus:
+                panels[activePanel]->setActiveP(0);
+                break;
 
             }
+
         }
 
         activePanel=panels[activePanel]->getActiveP();

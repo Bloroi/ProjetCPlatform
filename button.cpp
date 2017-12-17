@@ -41,6 +41,7 @@ button::button(const button& b){
     this->name = b.name;
     this->todo = b.todo;
 
+
 }
 
 button& button::operator=(const button& b){
@@ -59,7 +60,7 @@ button& button::operator=(const button& b){
     return *this;
 }
 
-
+/*Méthode permettant de changer la texture d'un bouton*/
 void button::changeTexture(bool selected){
     if(selected){
         sprite.setTexture(textureClicked);
@@ -69,6 +70,7 @@ void button::changeTexture(bool selected){
     }
 }
 
+/*Methode permettant de savoir si le bouton est sélectionné*/
 bool button::isSelected(int x,int y)
 {
     if(sprite.getGlobalBounds().contains(x,y))
@@ -78,6 +80,7 @@ bool button::isSelected(int x,int y)
     return false;
 }
 
+/*Méthode pour changer la position du bouton*/
 void button::setPosition(int x, int y)
 {
     sprite.setPosition(sf::Vector2f(x,y));

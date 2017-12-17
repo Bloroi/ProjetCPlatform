@@ -2,6 +2,8 @@
 #include <iostream>
 
 using namespace std;
+
+sf::Music music;
 /*
 istream& operator>>(istream& is, Platform& p)
 {

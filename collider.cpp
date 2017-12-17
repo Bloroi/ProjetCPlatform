@@ -1,9 +1,10 @@
 #include "collider.h"
 
-Collider:: Collider(sf::RectangleShape& body) :
-    body(body)
+/*Collider::Collider()
 {
-
+}*/
+Collider::Collider(sf::RectangleShape& body):body(body)
+{
 }
 
 /*Collider::Collider(const Collider& b){
@@ -109,6 +110,8 @@ bool Collider::CheckCollect(Collider other){
     return false;
 }
 
+/**Cette méthode permet de vérifier si un objet touche une platform.
+ * Exemple :Un joueur qui marche sur la plateform**/
 bool Collider::CheckOnPlatform(Collider other){
    // cout<<body.getPosition().x <<body.getPosition().y<<endl;
 
@@ -131,7 +134,9 @@ bool Collider::CheckOnPlatform(Collider other){
 
     return false;
 }
-
+/**Cette méthode permet de vérifier si un objet touche un mur.
+ * Exemple :Au début du jeu, je joueur ne peut pas aller à gauche
+ * car il y a un mur**/
 bool Collider::CheckWalls(Collider other){
    // cout<<body.getPosition().x <<body.getPosition().y<<endl;
 

@@ -16,11 +16,14 @@ class PGame : public Panel
      sf::View viewGame;
      Player player;
     public:
+     /*FORME CANONIQUE*/
      PGame(){}
      PGame(sf::RenderWindow* window);
-//   PGame(const Panel& c);
-       ~PGame();
-//   PGame& operator=(const PGame& e);
+     PGame(const PGame& c);
+     virtual ~PGame();
+     PGame& operator=(const PGame& e);
+
+
      void ResizeView();
 };
 

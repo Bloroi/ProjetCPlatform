@@ -4,6 +4,9 @@
 #include <istream>
 #include <ostream>
 #include <fstream>
+#include <SFML/Audio.hpp>
+#include <QFileInfo>
+#include <QDebug>
 
 using namespace std;
 

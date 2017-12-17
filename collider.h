@@ -8,12 +8,15 @@ using namespace std;
 
 class Collider
 {
+private:
+    sf::RectangleShape& body;
 public:
-    //Collider(){}
+    /*FORME CANONIQUE*/
+    Collider();
     Collider(sf::RectangleShape& body);
-    // Collider(const Collider& c);
-      ~Collider();
-  //    Collider& operator=(const Collider& e);
+   // Collider(const Collider& c);
+    ~Collider();
+    //Collider& operator=(const Collider& e);
 
     void Move(float dx,float dy){ body.move(dx,dy);}
 
@@ -23,8 +26,6 @@ public:
     bool CheckWalls(Collider other);
     sf::Vector2f GetPosition(){ return body.getPosition();}
     sf::Vector2f GetHalfSize(){ return body.getSize()/2.0f;}
-private:
-    sf::RectangleShape& body;
 
 };
 

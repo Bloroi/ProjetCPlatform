@@ -8,6 +8,7 @@
 #include "functions.h"
 #include "item.h"
 #include "projectile.h"
+#include <SFML/Audio.hpp>
 
 using namespace std;
 
@@ -26,16 +27,21 @@ private :
     float deltaTime = 0.0f;
     sf::Clock clock;
     sf::Event event;
+
+
 public:
+    /*FORME CANONIQUE*/
     PLevel(){}
     PLevel(sf::RenderWindow* window);
-    //   PLevel(const PLevel& c);
-           ~PLevel();
-    //   PLevel& operator=(const PLevel& e);
+    PLevel(const PLevel& c);
+    ~PLevel();
+    PLevel& operator=(const PLevel& e);
+
+
     void init();
     keyPressedOnce();
     void initDeltaTime();
-    int getType()const{return 2;}
+    int getType()const{return PLEVEL1;}
 
 };
 
