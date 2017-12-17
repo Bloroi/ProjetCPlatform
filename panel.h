@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <button.h>
+#include <soundengine.h>
 
 
 class Panel
@@ -20,6 +21,8 @@ protected:
 
     float VIEW_GAME = 1600.0f;
     float VIEW_MENU = 512.0f;
+    SoundEngine *se = SoundEngine::getInstance();
+
 
 public:
     /*FORME CANONIQUE*/
