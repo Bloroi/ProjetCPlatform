@@ -18,7 +18,7 @@ public:
         //coin.setFillColor(sf::Color::Yellow);
         item.setPosition(pos);
         sf::Texture *texture = new sf::Texture;
-        if(!texture->loadFromFile("images/sword1.png"))
+        if(!texture->loadFromFile("images/key.png"))
             qDebug()<<"Fichier n'existe pas";
 
         item.setTexture(texture);

@@ -27,12 +27,23 @@ PLevel::PLevel(sf::RenderWindow* window): PGame(window)
         }
 
         //enemies
-        enemies.push_back(new Enemy(&enemyTexture2,sf::Vector2u(4,4), sf::Vector2f(150,200),sf::Vector2f(3100.0f,425.0f),0.2f,150.0f,3));
         enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(300,350),sf::Vector2f(3050.0f,425.0f),0.1f,250.0f,3));
-        enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(100,100),sf::Vector2f(2900.0f,425.0f),0.1f,350.0f,3));
+
+        enemies.push_back(new Enemy(&enemyTexture2,sf::Vector2u(4,4), sf::Vector2f(150,200),sf::Vector2f(11500.0f,-900.0f),0.2f,150.0f,3));
+        enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(300,350),sf::Vector2f(10500.0f,-900.0f),0.1f,250.0f,3));
+        enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(100,100),sf::Vector2f(10500.0f,-900.0f),0.1f,350.0f,3));
+
+        enemies.push_back(new Enemy(&enemyTexture2,sf::Vector2u(4,4), sf::Vector2f(150,200),sf::Vector2f(5750.0f,-1200.0f),0.2f,150.0f,3));
+        enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(300,350),sf::Vector2f(4750.0f,-1200.0f),0.1f,250.0f,3));
+        enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(100,100),sf::Vector2f(6750.0f,-1200.0f),0.1f,350.0f,3));
+
+        enemies.push_back(new Enemy(&enemyTexture2,sf::Vector2u(4,4), sf::Vector2f(150,200),sf::Vector2f(250.0f,-2600.0f),0.2f,150.0f,3));
+        enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(300,350),sf::Vector2f(5750.0f,-4400.0f),0.1f,250.0f,3));
+        enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(100,100),sf::Vector2f(6750.0f,-4400.0f),0.1f,350.0f,3));
+        enemies.push_back(new Enemy(&enemyTexture1,sf::Vector2u(4,4), sf::Vector2f(100,100),sf::Vector2f(14250.0f,-5900.0f),0.1f,350.0f,3));
 
         //ITEMS
-        items.push_back(Item(sf::Vector2f(80,80),sf::Vector2f(570,420)));
+        items.push_back(Item(sf::Vector2f(80,80),sf::Vector2f(13250,-1200)));
 
 
 
@@ -84,6 +95,7 @@ void PLevel::init()
             /*Personnage en mvt*/
                     player.Update(deltaTime);
                     /*Ennemi en mvt*/
+                    bool dommage = false;
                     for(int i=0;i<enemies.size();i++){
 
                         enemies[i]->Update(deltaTime,platforms);
@@ -91,8 +103,13 @@ void PLevel::init()
                             //player.setPosition(sf::Vector2f(0.00f,0.00f));
                             //player.OnCollision(direction);
                             player.setcolordamage(sf::Color::Red);
+                            dommage = true;
+                          /*  if(dommage){
+                                player.setHealth(player.getHealth() - 1);
+                            }*/
                          }
                         else{
+                            dommage = false;
                             player.setcolordamage(sf::Color::White);
                         }
                     }
@@ -100,8 +117,9 @@ void PLevel::init()
 
                     sf::Vector2f direction;
 
-                    if(player.GetPosition().y > 1000){
+                    if(player.GetPosition().y > 1000 || player.getHealth() == 0){
                        player.setPosition(sf::Vector2f(206.0f,206.0f));
+                        player.setHealth(player.getHealth() - 1);
                     }
 
 
@@ -196,7 +214,7 @@ void PLevel::init()
                             for(int i=0;i< projectileVector.size();i++)
                             {
 
-                                if(projectileVector[i].GetPosition().x>( player.GetPosition().x*4)){
+                                if(projectileVector[i].GetPosition().x>( player.GetPosition().x + 500)){
                                     projectileVector.erase(projectileVector.begin()+i);
                                 }
                                 else
