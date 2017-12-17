@@ -9,8 +9,9 @@ Projectile::Projectile(sf::Texture* texture,sf::Vector2f size, int speed){
 
 /*Projectile::Projectile(const Projectile& b){
 
-    this->rect=b.rect;
-    this->buttons=b.buttons;
+   // projectile.setSize(size);
+   // projectile.setTexture(texture);
+    this->speed=b.speed;
 
 }
 

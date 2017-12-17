@@ -16,11 +16,11 @@ Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::
     //body.setFillColor(sf::Color::Red);
 }
 
-/*Enemy::Enemy(const Enemy& b){
+Enemy::Enemy(const Enemy& b){
 
     this->speed = b.speed;
-    this->row = 0;
-    thiw->faceRight = true;
+    this->row = b.row;
+    this->faceRight = b.faceRight;
     this->body.setPosition(b.position);
 
     this->body=b.body;
@@ -31,17 +31,17 @@ Enemy::Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::
 Enemy& Enemy::operator=(const Enemy& b){
     if(!(&b==this)){
 
-    this->speed = b.speed;
-    this->row = 0;
-    thiw->faceRight = true;
-    this->body.setPosition(b.position);
+        this->speed = b.speed;
+        this->row = b.row;
+        this->faceRight = b.faceRight;
+        this->body.setPosition(b.position);
 
-    this->body=b.body;
-    pos =0;
+        this->body=b.body;
+        pos =0;
 
     }
     return *this;
-}*/
+}
 
 Enemy::~Enemy(){
 
@@ -74,7 +74,7 @@ void Enemy::OnCollision(sf::Vector2f direction)
 
 }
 
-
+/*Méthode qui permet de faire bouger l'ennemi*/
 void Enemy::Update(float deltaTime,vector<Platform> plats){
 
 
@@ -191,7 +191,7 @@ if(velocity.y==0){
 
 
 
-
+/*Méthode qui permet d'afficher l'ennemi dans le panel*/
 void Enemy::Draw(sf::RenderWindow& window){
     window.draw(body);
 }

@@ -15,14 +15,14 @@ PWelcome::PWelcome(sf::RenderWindow* window) : PMenus(window)
     //buttons.push_back(new button("buttonSettings",Panel::PMENU,2,sf::Vector2i(0,150),"images/bouton1.png","images/bouton2.png"));
 
 }
-/*PMenu::PMenu(const PMenu& b){
+PWelcome::PWelcome(const PWelcome& b){
 
     this->rect=b.rect;
     this->buttons=b.buttons;
 
 }
 
-PMenu& PMenu::operator=(const PMenu& b){
+PWelcome& PWelcome::operator=(const PWelcome& b){
     if(!(&b==this)){
 
     this->rect=b.rect;
@@ -30,7 +30,7 @@ PMenu& PMenu::operator=(const PMenu& b){
 
     }
     return *this;
-}*/
+}
 
 PWelcome::~PWelcome()
 {}

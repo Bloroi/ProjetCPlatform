@@ -42,7 +42,8 @@ SOURCES += \
     plevel.cpp \
     pmenus.cpp \
     pwelcome.cpp \
-    pabout.cpp
+    pabout.cpp \
+    item.cpp
 
 HEADERS += \
     animation.h \

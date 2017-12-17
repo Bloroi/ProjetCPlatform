@@ -25,7 +25,8 @@ Player::Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,flo
     body.setTexture(texture);
     //body.setFillColor(sf::Color::Blue);
 }
-/*Player::Player(const Player& b){
+
+Player::Player(const Player& b){
 
   this->animation= b.animation;
 
@@ -50,7 +51,7 @@ Player& Player::operator=(const Player& b){
 
     }
     return *this;
-}*/
+}
 
 
 Player::~Player(){

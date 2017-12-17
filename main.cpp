@@ -31,6 +31,7 @@ int main(){
     sf::RenderWindow window(sf::VideoMode(800,600),"The Legend of HELHa",sf::Style::Close | sf::Style::Resize);
 
     int activePanel=0;
+    //Ajout des panels
     vector<Panel*> panels;
     panels.push_back(new PWelcome(&window));
     panels.push_back(new PSettings(&window));

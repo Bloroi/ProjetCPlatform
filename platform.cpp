@@ -14,35 +14,27 @@ Platform::Platform(string name,string filename, sf::Vector2f size, sf::Vector2f 
     body.setPosition(position);
     this->filename = filename;
 }
-/*Platform::Platform(const Platform& b){
+Platform::Platform(const Platform& b){
 
     this->name = b.name;
-
-    sf::Texture *texture = new sf::Texture;
-    if(!texture->loadFromFile(filename))
-        qDebug()<<"Fichier n'existe pas";
-
-    this->body=b.body;
     this->filename = b.filename;
+    this->body=b.body;
+
 
 }
 
 Platform& Platform::operator=(const Platform& b){
     if(!(&b==this)){
 
-    this->name = b.name;
+        this->name = b.name;
+        this->filename = b.filename;
+        this->body=b.body;
 
-    sf::Texture *texture = new sf::Texture;
-    if(!texture->loadFromFile(filename))
-        qDebug()<<"Fichier n'existe pas";
-
-    this->body=b.body;
-    this->filename = b.filename;
 
 
     }
     return *this;
-}*/
+}
 
 Platform::~Platform()
 {

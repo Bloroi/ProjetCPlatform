@@ -35,7 +35,7 @@ PLevel::PLevel(sf::RenderWindow* window): PGame(window)
 
 
 }
-/*PLevel::PLevel(const PLevel& b){
+PLevel::PLevel(const PLevel& b){
 
         readPlatform(platforms,"level/platforms.txt");
         this->enemyTexture1= b.enemyTexture1;
@@ -43,7 +43,7 @@ PLevel::PLevel(sf::RenderWindow* window): PGame(window)
 
         this->projectileTexture= b.projectileTexture;
 
-        this->ennemies = b.ennemies;
+        this->enemies = b.enemies;
 
         this->items= b.items;
 
@@ -58,18 +58,19 @@ PLevel& PLevel::operator=(const PLevel& b){
 
         this->projectileTexture= b.projectileTexture;
 
-        this->ennemies = b.ennemies;
+        this->enemies = b.enemies;
 
         this->items= b.items;
 
 
     }
     return *this;
-}*/
+}
 
 PLevel::~PLevel()
 {}
-
+/*Méthode qui est appelée tout le temps dans le jeu.
+ * Sorte de main pour une classe*/
 void PLevel::init()
 {
     int shoottimer = 0;
@@ -194,7 +195,7 @@ void PLevel::init()
                             for(int i=0;i< projectileVector.size();i++)
                             {
 
-                                if(projectileVector[i].GetPosition().x>( player.GetPosition().x*4)){
+                                if(projectileVector[i].GetPosition().x>( player.GetPosition().x+250)){
                                     projectileVector.erase(projectileVector.begin()+i);
                                 }
                                 else
@@ -226,6 +227,7 @@ PLevel::keyPressedOnce(){
     }
 }
 
+/*Initialiser le delta time*/
 void PLevel::initDeltaTime(){
  deltaTime = clock.restart().asSeconds();
         if(deltaTime > 1.0f /20.0f){

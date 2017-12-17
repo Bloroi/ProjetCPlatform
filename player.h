@@ -7,12 +7,29 @@
 
 class Player
 {
+
+private:
+    sf::RectangleShape body;
+    Animation animation;
+    unsigned int row;
+    float speed;
+    bool faceRight;
+    bool key;
+    sf::Vector2f velocity;
+    bool canJump;
+    float jumpHeight;
+    int health;
+    int score;
+
 public:
+    /*FORME CANONIQUE*/
     Player();
     Player(sf::Texture* texture,sf::Vector2u imageCount,float switchTime,float speed,float jumpHeight, int score = 0,int health = 5, bool key = false);
-    //   Player(const Player& c);
-           ~Player();
-    //   Player& operator=(const Player& e);
+    Player(const Player& c);
+    ~Player();
+    Player& operator=(const Player& e);
+
+
     void Update(float deltaTime);
     void Draw(sf::RenderWindow& window);
     void OnCollision(sf::Vector2f direction);
@@ -32,21 +49,6 @@ public:
     {
         this->getGlo
     }*/
-private:
-    sf::RectangleShape body;
-    Animation animation;
-    unsigned int row;
-    float speed;
-    bool faceRight;
-    bool key;
-    sf::Vector2f velocity;
-    bool canJump;
-    float jumpHeight;
-    int health;
-    int score;
-
-
-
 
 };
 

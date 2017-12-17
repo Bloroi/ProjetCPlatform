@@ -30,11 +30,14 @@ private :
 
 
 public:
+    /*FORME CANONIQUE*/
     PLevel(){}
     PLevel(sf::RenderWindow* window);
-    //   PLevel(const PLevel& c);
-           ~PLevel();
-    //   PLevel& operator=(const PLevel& e);
+    PLevel(const PLevel& c);
+    ~PLevel();
+    PLevel& operator=(const PLevel& e);
+
+
     void init();
     keyPressedOnce();
     void initDeltaTime();

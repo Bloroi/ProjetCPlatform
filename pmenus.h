@@ -17,9 +17,13 @@ protected:
     sf::Font arial;
 
 public:
+    /*FORME CANONIQUE*/
     PMenus(){}
     PMenus(sf::RenderWindow* window);
-    ~PMenus(){}
+    PMenus(const PMenus& c);
+    ~PMenus(){};
+    PMenus& operator=(const PMenus& e);
+
     void ResizeView();
 };
 

@@ -17,6 +17,7 @@ private:
     int todo;
     string name;
 public:
+    /*FORME CANONIQUE*/
     button(){}
     button(string name,int todo,float size,sf::Vector2i pos,string path="0",string pathSelected="0");
     ~button(){}

@@ -15,11 +15,14 @@ using std::string;
 class Platform
 {
 public:
+    /*FORME CANONIQUE*/
     Platform(){}
     Platform(string name,string filename, sf::Vector2f size, sf::Vector2f position );
-    //   Platform(const Platform& c);
-           ~Platform();
-    //   Platform& operator=(const Platform& e);
+    Platform(const Platform& c);
+    ~Platform();
+    Platform& operator=(const Platform& e);
+
+
     string getName()const{return name;}
 
 

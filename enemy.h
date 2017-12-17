@@ -11,21 +11,6 @@ using namespace std;
 
 class Enemy
 {
-public:
-    Enemy(){}
-    Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::Vector2f position,float switchTime,float speed,int heath);
-    // Enemy(const Enemy& c);
-      ~Enemy();
-  //    Enemy& operator=(const Enemy& e);
-
-    void Update(float deltaTime,vector<Platform> plats);
-    void Draw(sf::RenderWindow& window);
-    void OnCollision(sf::Vector2f direction);
-
-    int getHealth()const{return health;}
-    void setHealth(int newHealth){health = newHealth;}
-    sf::Vector2f GetPosition(){return body.getPosition();}
-    Collider GetCollider(){ return Collider(body);}
 private:
     sf::RectangleShape body;
     Animation animation;
@@ -36,6 +21,23 @@ private:
     int health;
     sf::Vector2f velocity;
     sf::Vector2f position;
+public:
+    /*FORME CANONIQUE*/
+    Enemy(){}
+    Enemy(sf::Texture* texture,sf::Vector2u imageCount,sf::Vector2f size,sf::Vector2f position,float switchTime,float speed,int heath);
+    Enemy(const Enemy& c);
+    ~Enemy();
+    Enemy& operator=(const Enemy& e);
+
+    void Update(float deltaTime,vector<Platform> plats);
+    void Draw(sf::RenderWindow& window);
+    void OnCollision(sf::Vector2f direction);
+
+    int getHealth()const{return health;}
+    void setHealth(int newHealth){health = newHealth;}
+    sf::Vector2f GetPosition(){return body.getPosition();}
+    Collider GetCollider(){ return Collider(body);}
+
 
 };
 

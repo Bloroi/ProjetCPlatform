@@ -17,17 +17,17 @@ private:
     sf::RectangleShape rect;
     vector<button*>buttons;
 public:
+    /*FORME CANONIQUE*/
     PWelcome(){}
     PWelcome(sf::RenderWindow* window);
-    //   PMenu(const PMenu& c);
-           ~PWelcome();
-    //   PMenu& operator=(const PMenu& e);
-    void init();
+    PWelcome(const PWelcome& c);
+    ~PWelcome();
+    PWelcome& operator=(const PWelcome& e);
 
+
+    void init();
     //Listeners
     keyPressedOnce();
-
-
     //Getters
     int getType()const{return PWELCOME;}
     //sf::RenderWindow* getWindow() const{return mainWindow;}

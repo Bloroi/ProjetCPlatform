@@ -6,6 +6,22 @@ PMenus::PMenus(sf::RenderWindow* window) : Panel(window)
      arial.loadFromFile("styles/arial.ttf");
 }
 
+PMenus::PMenus(const PMenus& b){
+
+    this->viewMenu=b.viewMenu;
+    this->arial=b.arial;
+
+}
+
+PMenus& PMenus::operator=(const PMenus& b){
+    if(!(&b==this)){
+
+        this->viewMenu=b.viewMenu;
+        this->arial=b.arial;
+    }
+    return *this;
+}
+
 void PMenus::ResizeView()
 {
     float aspectRatio = float(mainWindow->getSize().x)/ float(mainWindow->getSize().y);

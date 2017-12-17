@@ -20,6 +20,36 @@ PAbout::PAbout(sf::RenderWindow* window) : PMenus(window)
     lblAbout.setPosition(sf::Vector2f(-250,-50));
 }
 
+PAbout::PAbout(const PAbout& b){
+
+    this->rect=b.rect;
+
+    this->buttons=b.buttons;
+
+    //about
+    this->lblAbout=b.lblAbout;
+}
+
+PAbout& PAbout::operator=(const PAbout& b){
+    if(!(&b==this)){
+
+        this->rect=b.rect;
+
+        this->buttons=b.buttons;
+
+        //about
+        this->lblAbout=b.lblAbout;
+
+    }
+    return *this;
+}
+
+PAbout::~PAbout(){
+
+}
+
+/*Méthode qui est appelée tout le temps dans le jeu.
+ * Sorte de main pour une classe*/
 void PAbout::init()
 {
     aspectRatio = float(mainWindow->getSize().x)/float(mainWindow->getSize().y);
@@ -48,7 +78,7 @@ void PAbout::init()
    mainWindow->draw(lblAbout);
 }
 
-
+/*Méthode pour permettre de revenir au panel précédent*/
 PAbout::keyPressedOnce(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
         setActiveP(Panel::PWELCOME);

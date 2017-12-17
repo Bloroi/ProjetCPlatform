@@ -17,9 +17,13 @@ private:
      ostringstream ssAbout;
      sf::Text lblAbout;
 public:
+     /*FORME CANONIQUE*/
     PAbout(){}
     PAbout(sf::RenderWindow* window);
-    ~PAbout(){}
+    PAbout(const PAbout& c);
+    ~PAbout();
+    PAbout& operator=(const PAbout& e);
+
 
     void init();
 

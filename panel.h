@@ -22,11 +22,12 @@ protected:
     float VIEW_MENU = 512.0f;
 
 public:
+    /*FORME CANONIQUE*/
     Panel(){}
     Panel(sf::RenderWindow* window);
-    // Panel(const Panel& c);
-      ~Panel();
-  //    Panel& operator=(const Panel& e);
+    Panel(const Panel& c);
+    ~Panel();
+    Panel& operator=(const Panel& e);
     enum{
         PWELCOME,
         PSETTINGS,
